@@ -20,16 +20,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-.octo-form__fields-gap {
-  margin-bottom: 1.25rem;
-}
-
-.octo-form__buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 2.5rem;
-}
-</style>
