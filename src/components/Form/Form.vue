@@ -94,13 +94,10 @@ export default {
       return true;
     });
 
-    const isEmpty = value => {
-      return (
-        value &&
-        value.constructor === Object &&
-        Object.entries(value).length === 0
-      );
-    };
+    const isEmpty = value =>
+      value &&
+      value.constructor === Object &&
+      Object.entries(value).length === 0;
 
     watch(
       () => props.errors,

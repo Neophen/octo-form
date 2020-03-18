@@ -15,3 +15,4 @@ export { default as Languages } from "./Languages";
 export { default as Avatar } from "./Avatar";
 export { default as Croppa } from "./Croppa";
 export { default as Image } from "./Image";
+export { default as Hidden } from "./Hidden";
