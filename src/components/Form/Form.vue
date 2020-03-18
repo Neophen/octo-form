@@ -1,7 +1,7 @@
 <template>
   <validation-observer
     ref="refValidation"
-    v-slot="{ valid, invalid, handleSubmit, dirty, reset }"
+    v-slot="{ valid, invalid, handleSubmit }"
   >
     <form ref="refForm" @submit.prevent="handleSubmit(onSubmit)">
       <octo-form-field
@@ -13,26 +13,33 @@
         :disabled="loading"
         v-model="field.value"
       ></octo-form-field>
-      <slot v-bind:dirty="dirty" v-bind:reset="reset" v-bind:invalid="invalid">
-        <div class="octo-form__buttons">
-          <o-button
-            class="octo-form__cancel-btn"
-            dusk="octo-form__cancel-btn"
-            :disabled="loading"
-            @click="$emit('cancel', dirty) && reset()"
-            >Cancel</o-button
-          >
-          <o-button
-            native-type="submit"
-            type="is-primary"
-            class="octo-form__confirm-btn"
-            dusk="octo-form__confirm-btn"
-            :loading="loading"
-            :disabled="invalid || !canSubmit"
-            >Confirm</o-button
-          >
-        </div>
-      </slot>
+      <div class="octo-form__buttons">
+        <o-button
+          v-if="formState.type === 'secondary'"
+          :type="formState.buttonType"
+          class="octo-form__cancel-btn"
+          :dusk="formConfig.secondaryDusk"
+          :disabled="loading"
+          @click="formState.secondaryAction"
+          >{{ formConfig.secondary }}</o-button
+        >
+        <o-checkbox
+          v-if="formState.type === 'accept'"
+          v-model="acceptTermsConditions"
+          class="octo-form__cancel-btn"
+        >
+          <slot name="accept"></slot>
+        </o-checkbox>
+        <o-button
+          native-type="submit"
+          type="is-primary"
+          class="octo-form__confirm-btn"
+          :dusk="formConfig.confirmDusk"
+          :loading="loading"
+          :disabled="invalid || !canSubmit"
+          >{{ formConfig.confirm }}</o-button
+        >
+      </div>
     </form>
   </validation-observer>
 </template>
@@ -53,7 +60,7 @@ export default {
     },
     config: {
       type: Object,
-      required: false
+      default: () => ({})
     },
     errors: [Array, Object],
     loading: Boolean
@@ -62,16 +69,26 @@ export default {
     const refForm = ref(null);
     const refValidation = ref(null);
 
+    const defaultConfig = {
+      confirm: "Confirm",
+      confirmDusk: "octo-form__confirm-btn",
+      secondary: "Cancel",
+      secondaryDusk: "octo-form__cancel-btn",
+      type: "default",
+      spacing: "octo-form__fields-gap",
+      secondaryAction: () => {}
+    };
+
     const state = reactive({
       newfieldset: props.fieldset,
-      acceptTermsConditions: false
+      acceptTermsConditions: false,
+      formConfig: { ...defaultConfig, ...props.config }
     });
 
     const canSubmit = computed(() => {
-      if (props.config && props.config.accept) {
+      if (formState.value.type === "accept") {
         return state.acceptTermsConditions;
       }
-
       return true;
     });
 
@@ -93,7 +110,7 @@ export default {
       }
     );
 
-    async function onSubmit() {
+    const onSubmit = async () => {
       emit("submit-state", "start");
 
       const prepareFields = Object.values(refValidation.value.refs)
@@ -120,23 +137,51 @@ export default {
 
       emit("submit-state", "finished");
       emit("submit", formData);
-    }
+    };
 
-    const fieldGap = computed(() => {
-      if (!props.config || !props.config.spacing) {
-        return "octo-form__fields-gap";
+    const fieldGap = computed(() => state.formConfig.spacing);
+
+    const secondaryAction = () => {
+      let isDirty = false;
+
+      if (refValidation.value) {
+        refValidation.value.reset();
+        isDirty = refValidation.value.flags.dirty;
       }
 
-      return props.config.spacing;
-    });
+      emit("cancel", isDirty);
+      state.formConfig.secondaryAction();
+    };
+
+    const formStates = {
+      default: {
+        buttonType: "is-default",
+        type: "secondary",
+        secondaryAction: secondaryAction
+      },
+      link: {
+        buttonType: "is-link",
+        type: "secondary",
+        secondaryAction: secondaryAction
+      },
+      accept: {
+        buttonType: "is-default",
+        type: "accept",
+        secondaryAction: () => {}
+      }
+    };
+
+    const formState = computed(() => formStates[state.formConfig.type]);
 
     return {
       ...toRefs(state),
       refValidation,
+      formState,
       refForm,
       onSubmit,
       canSubmit,
-      fieldGap
+      fieldGap,
+      secondaryAction
     };
   }
 };

@@ -265,6 +265,39 @@ export const loginFieldset = {
   },
 }
 
+export const linkFieldset = {
+  email: {
+    display: 'Email',
+    type: 'text',
+    validate: 'required|email',
+    textType: 'email',
+    autocomplete: 'email',
+    placeholder: 'Email...',
+  },
+  password: {
+    display: 'Password',
+    type: 'password',
+    validate: 'required',
+    autocomplete: 'password',
+    placeholder: 'Password...',
+  },
+}
+
+export const acceptFieldset = {
+  email: {
+    display: 'Name',
+    type: 'text',
+    autocomplete: 'name',
+    placeholder: 'Name...',
+  },
+  phone: {
+    display: 'Phone',
+    type: 'text',
+    autocomplete: 'phone',
+    placeholder: 'Phone...',
+  },
+}
+
 export const loginFieldsetNumbered = {
   email: {
     display: 'Email',
@@ -290,7 +323,7 @@ export const contactFieldset = {
     display: "Email",
     type: "text",
     validate: "email|max:100",
-    icon: "contact-mail",
+    icon: "contact-email",
     textType: "email"
   },
   phone: {
@@ -319,7 +352,7 @@ export const contactFieldsetNumbered = {
     type: "text",
     number: 1,
     validate: "email|max:100",
-    icon: "contact-mail",
+    icon: "contact-email",
     textType: "email"
   },
   phone: {
