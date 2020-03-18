@@ -27,6 +27,7 @@
           v-if="formState.type === 'accept'"
           v-model="acceptTermsConditions"
           class="octo-form__cancel-btn"
+          :name="formConfig.acceptName"
         >
           <slot name="accept"></slot>
         </o-checkbox>
@@ -76,7 +77,8 @@ export default {
       secondaryDusk: "octo-form__cancel-btn",
       type: "default",
       spacing: "octo-form__fields-gap",
-      secondaryAction: () => {}
+      secondaryAction: () => {},
+      acceptName: null
     };
 
     const state = reactive({

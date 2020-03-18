@@ -247,77 +247,6 @@ export const filmFieldset = {
 };
 
 
-export const loginFieldset = {
-  email: {
-    display: 'Email',
-    type: 'text',
-    validate: 'required|email',
-    textType: 'email',
-    autocomplete: 'email',
-    placeholder: 'Email...',
-  },
-  password: {
-    display: 'Password',
-    type: 'password',
-    validate: 'required',
-    autocomplete: 'password',
-    placeholder: 'Password...',
-  },
-}
-
-export const linkFieldset = {
-  email: {
-    display: 'Email',
-    type: 'text',
-    validate: 'required|email',
-    textType: 'email',
-    autocomplete: 'email',
-    placeholder: 'Email...',
-  },
-  password: {
-    display: 'Password',
-    type: 'password',
-    validate: 'required',
-    autocomplete: 'password',
-    placeholder: 'Password...',
-  },
-}
-
-export const acceptFieldset = {
-  email: {
-    display: 'Name',
-    type: 'text',
-    autocomplete: 'name',
-    placeholder: 'Name...',
-  },
-  phone: {
-    display: 'Phone',
-    type: 'text',
-    autocomplete: 'phone',
-    placeholder: 'Phone...',
-  },
-}
-
-export const loginFieldsetNumbered = {
-  email: {
-    display: 'Email',
-    type: 'text',
-    number: 1,
-    validate: 'required|email',
-    textType: 'email',
-    autocomplete: 'email',
-    placeholder: 'Email...',
-  },
-  password: {
-    display: 'Password',
-    type: 'password',
-    number: 2,
-    validate: 'required',
-    autocomplete: 'password',
-    placeholder: 'Password...',
-  },
-}
-
 export const contactFieldset = {
   email: {
     display: "Email",
@@ -353,13 +282,15 @@ export const contactFieldsetNumbered = {
     number: 1,
     validate: "email|max:100",
     icon: "contact-email",
-    textType: "email"
+    autocomplete: 'email',
+    textType: "email",
   },
   phone: {
     display: "Phone",
     type: "text",
     number: 2,
     validate: "max:100",
+    autocomplete: 'phone',
     icon: "contact-phone",
   },
   facebook: {
