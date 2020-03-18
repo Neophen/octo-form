@@ -37,7 +37,10 @@
 
 .octo-form__buttons {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin-top: 2.5rem;
+}
+
+.octo-form__confirm-btn {
+  margin-left: auto;
 }
