@@ -1,5 +1,5 @@
 <template>
-  <o-h size="2" type="is-muted">{{ title }}</o-h>
+  <o-h size="2" :type="sectionType">{{ title }}</o-h>
 </template>
 
 <script>

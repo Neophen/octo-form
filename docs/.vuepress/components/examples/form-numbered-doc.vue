@@ -18,7 +18,7 @@ export default {
           number: 1,
           validate: "email|max:100",
           autocomplete: "email",
-          textType: "email"
+          inputType: "email"
         },
         phone: {
           display: "Phone",

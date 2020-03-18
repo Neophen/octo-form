@@ -1,6 +1,8 @@
 <template>
   <o-field
     :label="title"
+    :tooltip="tooltip"
+    :can-toggle="canToggle"
     :type="{ 'is-danger': error }"
     :message="error"
     :label-for="key"

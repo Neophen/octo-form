@@ -12,28 +12,45 @@ export default {
   setup() {
     const state = reactive({
       defaultFieldset: {
-        email: {
-          display: "Email",
+        with_icon: {
+          display: "Field with icon",
           type: "text",
+          placeholder: "Enter some text...",
+          icon: "contact-email",
           validate: "email|max:100",
           autocomplete: "email",
-          textType: "email"
+          inputType: "email"
         },
-        phone: {
-          display: "Phone",
+        with_number: {
+          display: "Field with number",
           type: "text",
+          placeholder: "Enter some text...",
+          number: 99,
           validate: "max:100",
-          autocomplete: "phone",
+          autocomplete: "phone"
         },
-        facebook: {
-          display: "Link to Facebook profile",
+        with_tooltip: {
+          display: "Text with tooltip",
           type: "text",
+          placeholder: "Enter some text...",
+          tooltip:
+            "Some information about the field, goes here.<br><br>It can contain html",
           validate: "max:100"
         },
-        slack: {
-          display: "Slack username",
+        toggle_value: {
+          display: "Field toggle, value provided",
           type: "text",
-          validate: "max:100",
+          placeholder: "Enter some text...",
+          value: "Some value",
+          canToggle: true,
+          validate: "max:100"
+        },
+        toggle_nope: {
+          display: "Field toggle, no value",
+          type: "text",
+          placeholder: "Enter some text...",
+          canToggle: true,
+          validate: "max:100"
         }
       }
     });

@@ -253,7 +253,7 @@ export const contactFieldset = {
     type: "text",
     validate: "email|max:100",
     icon: "contact-email",
-    textType: "email"
+    inputType: "email"
   },
   phone: {
     display: "Phone",
@@ -283,7 +283,7 @@ export const contactFieldsetNumbered = {
     validate: "email|max:100",
     icon: "contact-email",
     autocomplete: 'email',
-    textType: "email",
+    inputType: "email",
   },
   phone: {
     display: "Phone",

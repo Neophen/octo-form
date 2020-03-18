@@ -17,7 +17,7 @@ export default {
           type: "text",
           validate: "required|email|max:100",
           autocomplete: "email",
-          textType: "email"
+          inputType: "email"
         },
         password: {
           display: "Password",

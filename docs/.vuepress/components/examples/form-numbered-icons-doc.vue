@@ -19,7 +19,7 @@ export default {
           icon: 'contact-email',
           validate: "email|max:100",
           autocomplete: "email",
-          textType: "email"
+          inputType: "email"
         },
         phone: {
           display: "Phone",

@@ -1,6 +1,8 @@
 <template>
   <o-field
     :label="title"
+    :tooltip="tooltip"
+    :can-toggle="canToggle"
     :type="{ 'is-danger': error }"
     :message="error"
     :label-for="key"
@@ -10,7 +12,7 @@
   >
     <o-input
       v-model.trim="innerValue"
-      :type="fieldType"
+      :type="inputType"
       :key="key"
       :name="key"
       :disabled="disabled"

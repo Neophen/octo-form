@@ -64,8 +64,17 @@ export const fieldMixin = {
     autocomplete() {
       return this.field.autocomplete || "off";
     },
-    fieldType() {
-      return this.field.textType || "text";
+    inputType() {
+      return this.field.inputType || "text";
+    },
+    sectionType() {
+      return this.field.sectionType || "is-muted";
+    },
+    tooltip() {
+      return this.field.tooltip;
+    },
+    canToggle() {
+      return this.field.canToggle;
     }
   }
 };
