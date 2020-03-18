@@ -167,6 +167,9 @@ export default {
         buttonType: "is-default",
         type: "accept",
         secondaryAction: () => {}
+      },
+      "no-cancel": {
+        type: "no-cancel"
       }
     };
 
