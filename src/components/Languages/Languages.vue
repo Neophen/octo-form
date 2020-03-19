@@ -17,7 +17,7 @@
       :label-for="key"
       :icon="fieldIcon"
       :number="fieldNumber"
-      :hasValue="!!innerValue"
+      :hasValue="!!computedValue"
     >
       <o-tags
         v-model="selectedItems"

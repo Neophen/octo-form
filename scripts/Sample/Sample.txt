@@ -8,11 +8,11 @@
     :label-for="key"
     :icon="fieldIcon"
     :number="fieldNumber"
-    :hasValue="!!innerValue"
+    :hasValue="!!computedValue"
   >
     <o-input
       expanded
-      v-model.trim.lazy="innerValue"
+      v-model.trim.lazy="computedValue"
       type="text"
       :key="key"
       :name="key"

@@ -8,14 +8,14 @@
     :label-for="key"
     :icon="fieldIcon"
     :number="fieldNumber"
-    :hasValue="!!innerValue"
+    :hasValue="!!computedValue"
   >
     <o-item-grid col-first>
       <o-radio
         v-for="(value, option) in options"
         :key="option"
         :name="key"
-        v-model="innerValue"
+        v-model="computedValue"
         :true-value="option"
         :native-value="option"
         :disabled="disabled"

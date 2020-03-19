@@ -10,16 +10,17 @@
     :number="fieldNumber"
     :hasValue="!!computedValue"
   >
-    <o-select
-      :placeholder="placeholder"
-      :disabled="disabled"
-      :name="key"
+    <o-datepicker
+      :key="key"
       v-model="computedValue"
-    >
-      <option v-for="option in years" :value="option" :key="option">
-        {{ option }}
-      </option>
-    </o-select>
+      :disabled="disabled"
+      :max-date="maxDate"
+      :min-date="minDate"
+      :name="key"
+      :placeholder="placeholder"
+      class="w-1/2"
+      icon="calendar-alt"
+    ></o-datepicker>
   </o-field>
 </template>
 
@@ -27,19 +28,15 @@
 import { fieldMixin } from "../../utils/fieldMixin.js";
 import { vModelMixin } from "../../utils/vModelMixin.js";
 export default {
-  name: "OctoFormYear",
+  name: "OctoFormDate",
   mixins: [vModelMixin, fieldMixin],
-  data() {
-    const currentYear = new Date().getFullYear();
-    const years = [];
-    let startYear = this.field.min ? this.field.min : 1950;
-    while (startYear <= currentYear) {
-      years.push(startYear++);
+  computed: {
+    minDate() {
+      return this.field.minDate;
+    },
+    maxDate() {
+      return this.field.maxDate;
     }
-
-    return {
-      years: years.reverse()
-    };
   }
 };
 </script>

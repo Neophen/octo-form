@@ -247,69 +247,6 @@ export const filmFieldset = {
 };
 
 
-export const contactFieldset = {
-  email: {
-    display: "Email",
-    type: "text",
-    validate: "email|max:100",
-    icon: "contact-email",
-    inputType: "email"
-  },
-  phone: {
-    display: "Phone",
-    type: "text",
-    validate: "max:100",
-    icon: "contact-phone",
-  },
-  facebook: {
-    display: "Link to Facebook profile",
-    type: "text",
-    icon: "contact-facebook",
-    validate: "max:100",
-  },
-  slack: {
-    display: "Slack username",
-    type: "text",
-    validate: "max:100",
-    icon: "contact-slack",
-  }
-};
-
-export const contactFieldsetNumbered = {
-  email: {
-    display: "Email",
-    type: "text",
-    number: 1,
-    validate: "email|max:100",
-    icon: "contact-email",
-    autocomplete: 'email',
-    inputType: "email",
-  },
-  phone: {
-    display: "Phone",
-    type: "text",
-    number: 2,
-    validate: "max:100",
-    autocomplete: 'phone',
-    icon: "contact-phone",
-  },
-  facebook: {
-    display: "Link to Facebook profile",
-    type: "text",
-    number: 3,
-    icon: "contact-facebook",
-    validate: "max:100",
-  },
-  slack: {
-    display: "Slack username",
-    type: "text",
-    number: 4,
-    validate: "max:100",
-    icon: "contact-slack",
-  }
-};
-
-
 export const inputsFieldset = {
   section_input: {
     display: "Inputs",
@@ -355,6 +292,12 @@ export const inputsFieldset = {
     display: "Year",
     type: "year",
     placeholder: "Please select a year..",
+    min: 2000,
+  },
+  date: {
+    display: "Date",
+    type: "date",
+    placeholder: "Please select a date..",
     min: 2000,
   },
   section_tags: {

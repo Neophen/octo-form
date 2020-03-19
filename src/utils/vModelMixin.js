@@ -1,7 +1,7 @@
 export const vModelMixin = {
   props: ["value"],
   computed: {
-    innerValue: {
+    computedValue: {
       get() {
         return this.value;
       },

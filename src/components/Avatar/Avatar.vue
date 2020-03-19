@@ -8,7 +8,7 @@
     :label-for="key"
     :icon="fieldIcon"
     :number="fieldNumber"
-    :hasValue="!!innerValue"
+    :hasValue="!!computedValue"
     class="octo-avatar"
   >
     <div

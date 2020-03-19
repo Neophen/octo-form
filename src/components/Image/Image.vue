@@ -8,7 +8,7 @@
     :label-for="key"
     :icon="fieldIcon"
     :number="fieldNumber"
-    :hasValue="!!innerValue"
+    :hasValue="!!computedValue"
     class="octo-image"
   >
     <!-- We have this here for optional images but we might need better config -->

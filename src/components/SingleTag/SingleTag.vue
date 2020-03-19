@@ -8,13 +8,13 @@
     :label-for="key"
     :icon="fieldIcon"
     :number="fieldNumber"
-    :hasValue="!!innerValue"
+    :hasValue="!!computedValue"
   >
     <o-select
       :placeholder="placeholder"
       :disabled="disabled"
       :name="key"
-      v-model="innerValue"
+      v-model="computedValue"
     >
       <option
         v-for="option in options"
