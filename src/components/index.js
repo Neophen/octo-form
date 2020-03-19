@@ -17,3 +17,4 @@ export { default as Croppa } from "./Croppa";
 export { default as Image } from "./Image";
 export { default as Hidden } from "./Hidden";
 export { default as Date } from "./Date";
+export { default as Partition } from "./Partition";

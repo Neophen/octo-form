@@ -328,6 +328,9 @@ export const inputsFieldset = {
     placeholder: "Please select a date..",
     min: 2000,
   },
+  partition_tags: {
+    type: 'partition',
+  },
   section_tags: {
     display: "Tags",
     type: "section"
@@ -442,6 +445,9 @@ export const inputsFieldset = {
     canToggle: true,
     type: "languages",
     placeholder: "Select languages..",
+  },
+  partition_images: {
+    type: 'partition',
   },
   section_Images: {
     display: "Images",
