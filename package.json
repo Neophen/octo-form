@@ -31,7 +31,7 @@
     "canvas-exif-orientation": "^0.4.0"
   },
   "devDependencies": {
-    "@mykolasm/octo-ui": "^0.1.47",
+    "@mykolasm/octo-ui": "^0.1.49",
     "@popperjs/core": "^2.1.1",
     "@vue/cli-plugin-babel": "~4.2.0",
     "@vue/cli-plugin-eslint": "~4.2.0",
