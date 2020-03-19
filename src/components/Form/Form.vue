@@ -12,7 +12,7 @@
         :fields="newfieldset"
         :disabled="loading"
         v-model="field.value"
-      ></octo-form-field>
+      />
       <div class="octo-form__buttons">
         <o-button
           v-if="formState.type === 'secondary'"
