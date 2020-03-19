@@ -32,6 +32,9 @@ export default {
   mixins: [vModelMixin, fieldMixin],
   computed: {
     minDate() {
+      if (this.field.minDate === "today") {
+        return new Date();
+      }
       return this.field.minDate;
     },
     maxDate() {
