@@ -248,6 +248,46 @@ export const filmFieldset = {
 
 
 export const inputsFieldset = {
+  select_items: {
+    display: "Select items",
+    type: "select-items",
+    icon: "sample-badge",
+    number: 1,
+    tooltip: 'some tooltip',
+    canToggle: true,
+    options: [
+      {
+        label: 'Films',
+        value: "films",
+      },
+      {
+        label: 'Sponsors',
+        value: "sponsors",
+      },
+      {
+        label: 'Events',
+        value: "events",
+      },
+      {
+        label: 'Recommendations',
+        value: "recommendations",
+      },
+      {
+        label: 'Bundles',
+        value: "bundles",
+      },
+      {
+        label: "Genre tags",
+        value: 'genre-tags',
+      },
+      {
+        label: 'Sections',
+        value: "sections",
+      },
+
+    ]
+
+  },
   date_range: {
     display: "Date range",
     minDate: 'today',

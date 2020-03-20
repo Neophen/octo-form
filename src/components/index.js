@@ -20,3 +20,4 @@ export { default as Date } from "./Date";
 export { default as Partition } from "./Partition";
 export { default as LabelSelect } from "./LabelSelect";
 export { default as DateRange } from "./DateRange";
+export { default as SelectItems } from "./SelectItems";
