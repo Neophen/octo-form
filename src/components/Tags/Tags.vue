@@ -26,7 +26,7 @@
         :data="displayTags"
         :disabled="disabled"
         autocomplete
-        :open-on-focus="true"
+        :open-on-focus="openOnFocus"
         :allow-new="allowNew"
         field="label"
         :allow-duplicates="false"
@@ -53,6 +53,13 @@ export default {
     };
   },
   computed: {
+    openOnFocus() {
+      if (this.field.open_on_focus !== undefined) {
+        return this.field.open_on_focus;
+      }
+
+      return true;
+    },
     allowNew() {
       return this.field.allow_new;
     },
