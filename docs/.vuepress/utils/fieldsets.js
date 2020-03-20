@@ -297,6 +297,28 @@ export const inputsFieldset = {
       other: "Other"
     }
   },
+  label_select: {
+    display: "Label select",
+    icon: "sample-badge",
+    number: 1,
+    tooltip: 'some tooltip',
+    canToggle: true,
+    type: "label-select",
+    options: [
+      {
+        label: "Admin",
+        value: "admin",
+      },
+      {
+        label: "Editor",
+        value: "editor",
+      },
+      {
+        label: "Attendee",
+        value: "attendee",
+      },
+    ],
+  },
   number: {
     display: "Number",
     icon: "sample-badge",
