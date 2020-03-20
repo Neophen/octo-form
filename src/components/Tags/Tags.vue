@@ -91,7 +91,6 @@ export default {
         });
       },
       set(tags) {
-        console.log(tags);
         const emitted = tags.map(tag => {
           if (typeof tag === "string") {
             return tag;
