@@ -248,27 +248,19 @@ export const filmFieldset = {
 
 
 export const inputsFieldset = {
-  cities: {
-    display: "Cities",
-    value: [],
-    type: "tags",
-    allow_new: true,
-    // This is to avoid the buefy bug, TODO fix in the ui lib
-    open_on_focus: false,
-    options: [
-      {
-        label: "Vilnius",
-        value: "1",
-      },
-      {
-        label: "Kaunas",
-        value: "2",
-      },
-    ],
-    info: `This will allow you to:
-        <br>- Add venues to the listed cities
-        <br>- Schedule films in the listed cities`,
-    tagType: "text",
+  date_range: {
+    display: "Date range",
+    minDate: 'today',
+    value: {
+      start: '2020-03-31T00:00:00.000000Z',
+      end: '2020-04-30T00:00:00.000000Z',
+    },
+    type: "date-range"
+  },
+  date_range_empty: {
+    display: "Date range empty",
+    minDate: 'today',
+    type: "date-range"
   },
   section_input: {
     display: "Inputs",

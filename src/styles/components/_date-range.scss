@@ -1,0 +1,11 @@
+.octo-form-date-range {
+  display: flex;
+  align-items: center;
+  .octo-form-date-range__input {
+    max-width: 257px;
+  }
+
+  * + * {
+    margin-left: 1rem;
+  }
+}

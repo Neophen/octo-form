@@ -20,25 +20,30 @@
       :placeholder="placeholder"
       class="w-1/2"
       icon="calendar-alt"
-    ></o-datepicker>
+    />
   </o-field>
 </template>
 
 <script>
 import { fieldMixin } from "../../utils/fieldMixin.js";
 import { vModelMixin } from "../../utils/vModelMixin.js";
+import { addDays, parseDate } from "../../utils/dateUtils";
 export default {
   name: "OctoFormDate",
   mixins: [vModelMixin, fieldMixin],
   computed: {
     minDate() {
+      if (!this.field.minDate) return null;
+
       if (this.field.minDate === "today") {
-        return new Date();
+        return addDays(new Date(), -1);
       }
-      return this.field.minDate;
+
+      return parseDate(this.field.minDate, this.field.timezone);
     },
     maxDate() {
-      return this.field.maxDate;
+      if (!this.field.maxDate) return null;
+      return parseDate(this.field.maxDate, this.field.timezone);
     }
   }
 };

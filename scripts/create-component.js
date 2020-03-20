@@ -19,26 +19,6 @@ const appendLine = (file, text) => {
   });
 };
 
-const insertLine = (file, text, lineNumber) => {
-  const data = fs
-    .readFileSync(file)
-    .toString()
-    .split("\n");
-
-  data.splice(lineNumber, 0, text);
-  const output = data.join("\n");
-
-  fs.writeFile(file, output, function(err) {
-    if (err) return console.log(err);
-  });
-};
-
-const addComponentToVuepressConfig = name => {
-  const vuepressConfig = "./docs/.vuepress/config.js";
-  const line = `                '${name}',`;
-  insertLine(vuepressConfig, line, 40);
-};
-
 const replaceInFile = async (file, options) => {
   fs.readFile(file, "utf8", function(err, data) {
     if (err) {
@@ -68,7 +48,6 @@ const componentDir = `./src/components/${name}`;
 const componentsIndex = `./src/components/index.js`;
 
 appendLine(componentsIndex, `export { default as ${name} } from "./${name}";`);
-addComponentToVuepressConfig(kebabName);
 
 // Create the directory
 fs.mkdir(componentDir, { recursive: true }, err => {
@@ -87,14 +66,6 @@ const allFiles = [
   {
     src: `./scripts/Sample/Sample.txt`,
     dest: `${componentDir}/${name}.vue`
-  },
-  {
-    src: `./scripts/sample-page.md`,
-    dest: `./docs/components/${kebabName}.md`
-  },
-  {
-    src: "./scripts/sample-doc.txt",
-    dest: `./docs/.vuepress/components/examples/${kebabName}-doc.vue`
   }
 ];
 

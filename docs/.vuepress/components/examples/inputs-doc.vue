@@ -13,6 +13,9 @@
         :errors="errorsBag"
       />
     </div>
+    <div class="docs-debug-content">
+      <pre>{{ JSON.stringify(inputsFieldset, null, 2) }}</pre>
+    </div>
   </div>
 </template>
 
@@ -40,7 +43,7 @@ export default {
       setTimeout(() => {
         state.isLoading = false;
         alert(submitData.join("\n"));
-      }, 3000);
+      }, 200);
     };
 
     const refreshErrors = () => {
@@ -51,3 +54,21 @@ export default {
   }
 };
 </script>
+
+
+<style lang="scss">
+.docs-debug-content {
+  $top: 40px;
+  width: 500px;
+  height: calc(100vh - $top);
+  height: 100vh;
+  position: fixed;
+  top: $top;
+  right: 0;
+  overflow-y: scroll;
+  padding: 1rem;
+  background-color: rgba($color: #000000, $alpha: 0.7);
+  // pointer-events: none;
+  color: white;
+}
+</style>
