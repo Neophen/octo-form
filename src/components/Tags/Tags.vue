@@ -75,8 +75,12 @@ export default {
       return this.tags.filter(tag => {
         if (!this.value) return true;
         const existingTags = this.value.map(x => x.toLowerCase());
-        const tagExists = existingTags.includes(tag.value);
-        return !tagExists;
+        const tagValueExists = existingTags.includes(tag.value);
+        if (tagValueExists) return false;
+
+        const tagLabelExists = existingTags.includes(tag.label.toLowerCase());
+
+        return !tagLabelExists;
       });
     },
     selectedTags: {

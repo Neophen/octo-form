@@ -258,11 +258,11 @@ export const inputsFieldset = {
     options: [
       {
         label: "Vilnius",
-        value: "vilnius",
+        value: "1",
       },
       {
         label: "Kaunas",
-        value: "kaunas",
+        value: "2",
       },
     ],
     info: `This will allow you to:
