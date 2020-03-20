@@ -248,6 +248,28 @@ export const filmFieldset = {
 
 
 export const inputsFieldset = {
+  cities: {
+    display: "Cities",
+    value: [],
+    type: "tags",
+    allow_new: true,
+    // This is to avoid the buefy bug, TODO fix in the ui lib
+    open_on_focus: false,
+    options: [
+      {
+        label: "Vilnius",
+        value: "vilnius",
+      },
+      {
+        label: "Kaunas",
+        value: "kaunas",
+      },
+    ],
+    info: `This will allow you to:
+        <br>- Add venues to the listed cities
+        <br>- Schedule films in the listed cities`,
+    tagType: "text",
+  },
   section_input: {
     display: "Inputs",
     type: "section"

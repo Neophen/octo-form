@@ -72,17 +72,32 @@ export default {
         : this.nonDuplicates;
     },
     nonDuplicates() {
-      return this.tags.filter(option =>
-        this.value ? !this.value.includes(option.value) : true
-      );
+      return this.tags.filter(tag => {
+        if (!this.value) return true;
+        const existingTags = this.value.map(x => x.toLowerCase());
+        const tagExists = existingTags.includes(tag.value);
+        return !tagExists;
+      });
     },
     selectedTags: {
       get() {
         if (!this.value) return [];
-        return this.value.map(tagValue => this.findTag(tagValue));
+        return this.value.map(tagValue => {
+          const tag = this.findTag(tagValue);
+          if (tag) {
+            return tag;
+          }
+          return tagValue;
+        });
       },
       set(tags) {
-        const emitted = tags.map(tag => tag.value);
+        console.log(tags);
+        const emitted = tags.map(tag => {
+          if (typeof tag === "string") {
+            return tag;
+          }
+          return tag.value;
+        });
         this.$emit("input", emitted);
       }
     }

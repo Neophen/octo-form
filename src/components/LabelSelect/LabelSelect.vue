@@ -10,7 +10,12 @@
     :number="fieldNumber"
     :hasValue="!!computedValue"
   >
-    <input :name="key" type="text" :value="computedValue.value" hidden />
+    <input
+      :name="key"
+      type="text"
+      :value="computedValue ? computedValue.value : null"
+      hidden
+    />
     <o-label-select
       v-model="computedValue"
       :options="options"
