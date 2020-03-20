@@ -27,6 +27,7 @@
         :disabled="disabled"
         autocomplete
         :open-on-focus="true"
+        :allow-new="allowNew"
         field="label"
         :allow-duplicates="false"
         :placeholder="placeholder"
@@ -52,6 +53,9 @@ export default {
     };
   },
   computed: {
+    allowNew() {
+      return this.field.allow_new;
+    },
     tags() {
       return this.field.options;
     },
@@ -83,7 +87,7 @@ export default {
     getFilteredTags(text) {
       this.filteredTags = this.nonDuplicates.filter(
         option =>
-          option.title
+          option.label
             .toString()
             .toLowerCase()
             .indexOf(text.toLowerCase()) >= 0
