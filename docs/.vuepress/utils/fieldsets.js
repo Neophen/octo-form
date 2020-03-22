@@ -248,6 +248,23 @@ export const filmFieldset = {
 
 
 export const inputsFieldset = {
+  switch: {
+    display: "Switch",
+    type: "switch",
+    icon: "sample-badge",
+    number: 1,
+    tooltip: 'some tooltip',
+    canToggle: true,
+  },
+  show_if: {
+    display: "Show if switch is on",
+    type: "switch",
+    icon: "sample-badge",
+    number: 1,
+    tooltip: 'some tooltip',
+    canToggle: true,
+    show_when: { switch: true }
+  },
   select_items: {
     display: "Select items",
     type: "select-items",

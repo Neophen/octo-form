@@ -1,5 +1,6 @@
 <template>
   <validation-provider
+    v-if="shouldShow"
     :rules="field.validate"
     tag="div"
     :vid="key"
@@ -39,7 +40,21 @@ export default {
     const key = getCurrentInstance().$vnode.key;
     const { modelValue } = useVModel(props, emit);
 
-    return { type, key, modelValue };
+    const shouldShow = computed(() => {
+      if (!props.field.show_when) return true;
+
+      const conditions = [props.field.show_when];
+      const conditionsMetMap = conditions.map(condition => {
+        const key = Object.keys(condition)[0];
+        const field = props.fields[key];
+        if (!field.value) return false;
+        return field.value === condition[key];
+      });
+
+      return conditionsMetMap.every(met => met === true);
+    });
+
+    return { type, key, modelValue, shouldShow };
   }
 };
 </script>
