@@ -1,23 +1,25 @@
 <template>
-  <validation-provider
-    v-if="shouldShow"
-    :rules="field.validate"
-    tag="div"
-    :vid="key"
-    :name="field.display"
-    v-slot="{ errors, required }"
-  >
-    <component
-      :is="type"
-      :key="key"
-      :name="key"
-      :disabled="disabled"
-      :required="required"
-      :field="field"
-      :error="errors[0]"
-      v-model="modelValue"
-    />
-  </validation-provider>
+  <o-transition-expand>
+    <validation-provider
+      v-if="shouldShow"
+      :rules="field.validate"
+      tag="div"
+      :vid="key"
+      :name="field.display"
+      v-slot="{ errors, required }"
+    >
+      <component
+        :is="type"
+        :key="key"
+        :name="key"
+        :disabled="disabled"
+        :required="required"
+        :field="field"
+        :error="errors[0]"
+        v-model="modelValue"
+      />
+    </validation-provider>
+  </o-transition-expand>
 </template>
 
 <script>
