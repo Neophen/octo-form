@@ -16,6 +16,7 @@
       :key="key"
       :name="key"
       :disabled="disabled"
+      @keydown.native.enter.prevent
       :maxlength="maxlength"
       :autocomplete="autocomplete"
       :placeholder="placeholder"
