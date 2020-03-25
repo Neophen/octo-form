@@ -83,6 +83,7 @@
             >Edit</o-button
           >
           <o-button
+            v-if="hasFocus"
             class="octo-avatar__focus-btn"
             size="is-sm"
             squared
@@ -124,6 +125,9 @@ export default {
       initialImg: props.value,
       width: props.field.width,
       height: props.field.height,
+      hasFocus: props.field.has_focus,
+      container: props.field.container,
+      folder: props.field.folder,
       containerWidth: props.field.width,
       focus: "50-50",
       isEditingFocus: false,
@@ -171,6 +175,14 @@ export default {
         {
           key: `${instance.$vnode.key}_focus`,
           value: `${state.posX}-${state.posY}`
+        },
+        {
+          key: `${instance.$vnode.key}_container`,
+          value: state.container
+        },
+        {
+          key: `${instance.$vnode.key}_folder`,
+          value: state.folder
         }
       ];
     };
