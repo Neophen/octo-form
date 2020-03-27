@@ -11,13 +11,6 @@
     :hasValue="!!computedValue"
     class="octo-image"
   >
-    <!-- We have this here for optional images but we might need better config -->
-    <input
-      v-if="initialImg && !croppa.chosenFile"
-      :value="value"
-      :name="key"
-      hidden
-    />
     <div
       ref="refAspecRatioBox"
       class="octo-aspect-ratio-box"
@@ -63,7 +56,6 @@
           @click="setFocus"
           class="octo-form__inset-container"
         >
-          <!-- <b-icon icon="dot-circle" size="is-large"> </b-icon> -->
           <o-icon
             icon="crosshair"
             class="octo-image__focus-target"
@@ -83,7 +75,7 @@
             >Edit</o-button
           >
           <o-button
-            v-if="hasFocus"
+            v-if="hasFocus && croppa.chosenFile"
             class="octo-avatar__focus-btn"
             size="is-sm"
             squared
