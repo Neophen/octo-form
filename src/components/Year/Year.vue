@@ -2,7 +2,7 @@
   <o-field
     :label="title"
     :tooltip="tooltip"
-    :can-toggle="canToggle"
+    :can-toggle="can_toggle"
     :type="{ 'is-danger': error }"
     :message="error"
     :label-for="key"

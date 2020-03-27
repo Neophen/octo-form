@@ -22,3 +22,4 @@ export { default as LabelSelect } from "./LabelSelect";
 export { default as DateRange } from "./DateRange";
 export { default as SelectItems } from "./SelectItems";
 export { default as Switch } from "./Switch";
+export { default as Images } from "./Images";

@@ -42,14 +42,14 @@ export default {
           type: "text",
           placeholder: "Enter some text...",
           value: "Some value",
-          canToggle: true,
+          can_toggle: true,
           validate: "max:100"
         },
         toggle_nope: {
           display: "Field toggle, no value",
           type: "text",
           placeholder: "Enter some text...",
-          canToggle: true,
+          can_toggle: true,
           validate: "max:100"
         }
       }

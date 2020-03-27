@@ -73,8 +73,8 @@ export const fieldMixin = {
     tooltip() {
       return this.field.tooltip;
     },
-    canToggle() {
-      return this.field.canToggle;
+    can_toggle() {
+      return this.field.can_toggle;
     }
   }
 };

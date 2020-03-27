@@ -10,12 +10,16 @@
     :number="fieldNumber"
     :hasValue="!!computedValue"
   >
-    <o-switch
+    <o-input
+      expanded
+      v-model.trim.lazy="computedValue"
+      type="text"
       :key="key"
       :name="key"
       :disabled="disabled"
-      v-model="computedValue"
-    />
+      :maxlength="maxlength"
+      :placeholder="placeholder"
+    ></o-input>
   </o-field>
 </template>
 
@@ -23,7 +27,7 @@
 import { fieldMixin } from "../../utils/fieldMixin.js";
 import { vModelMixin } from "../../utils/vModelMixin.js";
 export default {
-  name: "OctoFormSwitch",
+  name: "OctoFormImages",
   mixins: [vModelMixin, fieldMixin]
 };
 </script>
