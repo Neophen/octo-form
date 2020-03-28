@@ -123,6 +123,16 @@ export default {
       reader.readAsDataURL(imageData.file);
     };
 
+    const generateID = () =>
+      (
+        Date.now().toString(36) +
+        Math.random()
+          .toString(36)
+          .substr(2, 5)
+      )
+        .toUpperCase()
+        .toLowerCase();
+
     const onImageSubmit = formData => {
       const hasImage = formData.get("image");
       if (!hasImage) {
@@ -196,7 +206,7 @@ export default {
         },
         image_id: {
           type: "hidden",
-          value: `image-${state.images.length}`
+          value: generateID()
         },
         is_add: {
           type: "hidden",
