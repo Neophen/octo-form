@@ -3,6 +3,7 @@
     <div class="control-box mb-4">
       <o-field label="Show some erros">
         <o-button @click="refreshErrors">Show errors</o-button>
+        <o-switch v-model="showData">Show data</o-switch>
       </o-field>
     </div>
     <div class="octo-box">
@@ -13,7 +14,7 @@
         :errors="errorsBag"
       />
     </div>
-    <div class="docs-debug-content">
+    <div class="docs-debug-content" v-if="showData">
       <pre>{{ JSON.stringify(inputsFieldset, null, 2) }}</pre>
     </div>
   </div>
@@ -29,20 +30,18 @@ export default {
       inputsFieldset,
       inputsFieldsetErrors,
       isLoading: false,
+      showData: false,
       errorsBag: {}
     });
 
     const handleSubmit = formData => {
       state.isLoading = true;
-      let submitData = [];
-      for (var pair of formData.entries()) {
-        const line = `${pair[0]}: ${pair[1]}`;
-        submitData.push(line);
+       for (var pair of formData.entries()) {
+        console.log(pair[0] + ": " + pair[1]);
       }
 
       setTimeout(() => {
         state.isLoading = false;
-        alert(submitData.join("\n"));
       }, 200);
     };
 

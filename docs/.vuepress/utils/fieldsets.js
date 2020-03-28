@@ -250,13 +250,18 @@ export const filmFieldset = {
 export const inputsFieldset = {
   images_test: {
     display: "Images",
+    type: "images",
     icon: "sample-badge",
     number: 1,
     tooltip: 'some tooltip',
     can_toggle: true,
-    max_files: 3,
-    type: "image",
-    value: ["/DianaAndMe.jpg"],
+    // max_files: 3,
+    value: [
+      {
+        id: "some-id",
+        src: "/DianaAndMe.jpg",
+      }
+    ],
     width: 1920,
     height: 1080
   },
@@ -583,26 +588,15 @@ export const inputsFieldset = {
   },
   images: {
     display: "Images",
+    type: "images",
     icon: "sample-badge",
     number: 1,
     tooltip: 'some tooltip',
     can_toggle: true,
     max_files: 3,
-    type: "image",
-    value: ["/DianaAndMe.jpg"],
     width: 1920,
     height: 1080
   },
-  // film_still_imgs: {
-  //   display: "Film stills",
-  //   type: "images",
-  //   max_files: 3,
-  //   container: "img_film",
-  //   folder: "film_stills",
-  //   quality: 3,
-  //   width: 640,
-  //   height: 360
-  // },
 };
 
 export const inputsFieldsetErrors = {

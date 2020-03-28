@@ -1,0 +1,41 @@
+.octo_image__container {
+  height: 100%;
+}
+
+.octo-aspect-ratio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-rows: 1fr;
+  grid-gap: 20px;
+
+  .octo-grid-item-container {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    height: 0;
+    width: 100%;
+  }
+}
+
+.octo-image__buttons {
+  z-index: 10;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+
+  display: flex;
+  * + * {
+    margin-left: 0.5rem;
+  }
+}
+
+
+.octo_images__existing {
+  object-fit: cover;
+  width: 100%;
+}
+
+.octo-images__add-icon {
+  pointer-events: none;
+  margin-bottom: .3rem;
+}

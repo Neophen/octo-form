@@ -14,8 +14,8 @@
     <div
       ref="refAspecRatioBox"
       class="octo-aspect-ratio-box"
-      :class="{ 'has-file': initialImg || croppa.chosenFile }"
       :style="aspectRatioStyle"
+      :class="{ 'has-file': initialImg || croppa.chosenFile }"
     >
       <octo-form-croppa
         class="octo-aspect-ratio-box-inside"
@@ -40,9 +40,9 @@
         >
           <div class="octo-avatar__placeholder octo-form__flex-center is-col">
             <o-icon icon="image" class="octo-avatar__placeholder-image" />
-            <o-h size="5" class="octo-avatar__placeholder-label"
-              >Click to select profile picture</o-h
-            >
+            <o-h size="5" class="octo-avatar__placeholder-label">
+              Click to select image
+            </o-h>
           </div>
         </div>
         <div
@@ -72,16 +72,18 @@
             :disabled="isEditingFocus"
             squared
             @click="croppa.chooseFile()"
-            >Edit</o-button
           >
+            Change
+          </o-button>
           <o-button
             v-if="hasFocus && croppa.chosenFile"
             class="octo-avatar__focus-btn"
             size="is-sm"
             squared
             @click="toggleFocus"
-            >{{ isEditingFocus ? "Set focus" : "Edit focus" }}</o-button
           >
+            {{ isEditingFocus ? "Set focus" : "Edit focus" }}
+          </o-button>
         </div>
       </octo-form-croppa>
     </div>
@@ -121,7 +123,7 @@ export default {
       container: props.field.container,
       folder: props.field.folder,
       containerWidth: props.field.width,
-      focus: "50-50",
+      focus: props.field.focus || "50-50",
       isEditingFocus: false,
       posX: 50,
       posY: 50
