@@ -1,8 +1,5 @@
 <template>
-  <validation-observer
-    ref="refValidation"
-    v-slot="{ valid, invalid, handleSubmit }"
-  >
+  <validation-observer ref="refValidation" v-slot="{ handleSubmit }">
     <form ref="refForm" @submit.prevent="handleSubmit(onSubmit)">
       <octo-form-field
         v-for="(field, key) in newfieldset"
@@ -37,7 +34,7 @@
           class="octo-form__confirm-btn"
           :dusk="formConfig.confirmDusk"
           :loading="loading"
-          :disabled="invalid || !canSubmit"
+          :disabled="!canSubmit"
           >{{ formConfig.confirm }}</o-button
         >
       </div>

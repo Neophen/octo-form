@@ -248,22 +248,10 @@ export const filmFieldset = {
 
 
 export const inputsFieldset = {
-  images_test: {
-    display: "Images",
-    type: "images",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
+  section_test: {
+    display: "Test",
+    type: "section",
     can_toggle: true,
-    // max_files: 3,
-    value: [
-      {
-        id: "some-id",
-        src: "/DianaAndMe.jpg",
-      }
-    ],
-    width: 1920,
-    height: 1080
   },
   switch: {
     display: "Switch",
@@ -272,6 +260,7 @@ export const inputsFieldset = {
     number: 1,
     tooltip: 'some tooltip',
     can_toggle: true,
+    show_when: { section_test: true }
   },
   show_if: {
     display: "Show if switch is on",
@@ -283,6 +272,7 @@ export const inputsFieldset = {
     show_when: { switch: true }
   },
   select_items: {
+    show_when: { section_test: true },
     display: "Select items",
     type: "select-items",
     icon: "sample-badge",
@@ -323,6 +313,7 @@ export const inputsFieldset = {
 
   },
   date_range: {
+    show_when: { section_test: true },
     display: "Date range",
     minDate: 'today',
     value: {
@@ -332,15 +323,18 @@ export const inputsFieldset = {
     type: "date-range"
   },
   date_range_empty: {
+    show_when: { section_test: true },
     display: "Date range empty",
     minDate: 'today',
     type: "date-range"
   },
   section_input: {
     display: "Inputs",
-    type: "section"
+    type: "section",
+    can_toggle: true,
   },
   text: {
+    show_when: { section_input: true },
     display: "Text",
     icon: "sample-badge",
     number: 1,
@@ -352,6 +346,7 @@ export const inputsFieldset = {
     localizable: true
   },
   textarea: {
+    show_when: { section_input: true },
     display: "Textarea",
     icon: "sample-badge",
     number: 1,
@@ -363,6 +358,7 @@ export const inputsFieldset = {
     localizable: true
   },
   rich_text: {
+    show_when: { section_input: true },
     display: "Rich text input",
     icon: "sample-badge",
     number: 1,
@@ -373,6 +369,7 @@ export const inputsFieldset = {
     localizable: true
   },
   radio_group: {
+    show_when: { section_input: true },
     display: "Radio group",
     icon: "sample-badge",
     number: 1,
@@ -386,6 +383,7 @@ export const inputsFieldset = {
     }
   },
   label_select: {
+    show_when: { section_input: true },
     display: "Label select",
     icon: "sample-badge",
     number: 1,
@@ -408,6 +406,7 @@ export const inputsFieldset = {
     ],
   },
   number: {
+    show_when: { section_input: true },
     display: "Number",
     icon: "sample-badge",
     number: 1,
@@ -419,6 +418,7 @@ export const inputsFieldset = {
   },
 
   year: {
+    show_when: { section_input: true },
     display: "Year",
     icon: "sample-badge",
     number: 1,
@@ -429,6 +429,7 @@ export const inputsFieldset = {
     min: 2000,
   },
   date: {
+    show_when: { section_input: true },
     display: "Date",
     icon: "sample-badge",
     number: 1,
@@ -561,7 +562,8 @@ export const inputsFieldset = {
   },
   section_Images: {
     display: "Images",
-    type: "section"
+    type: "section",
+    can_toggle: true,
   },
   avatar: {
     display: "Avatar",
@@ -579,21 +581,29 @@ export const inputsFieldset = {
     icon: "sample-badge",
     number: 1,
     tooltip: 'some tooltip',
-    can_toggle: true,
+    // can_toggle: true,
     has_focus: true,
+    validate: "required",
     type: "image",
-    value: "/DianaAndMe.jpg",
+    // value: "/DianaAndMe.jpg",
     width: 1920,
     height: 1080
   },
   images: {
     display: "Images",
     type: "images",
+    validate: "required",
     icon: "sample-badge",
     number: 1,
     tooltip: 'some tooltip',
     can_toggle: true,
     max_files: 3,
+    value: [
+      {
+        id: "some-id",
+        src: "/DianaAndMe.jpg",
+      }
+    ],
     width: 1920,
     height: 1080
   },

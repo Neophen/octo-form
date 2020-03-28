@@ -8,7 +8,7 @@
     :label-for="key"
     :icon="fieldIcon"
     :number="fieldNumber"
-    :hasValue="!!computedValue"
+    :hasValue="!!value"
     class="octo-image"
   >
     <div
@@ -22,11 +22,12 @@
         @init="resizeAspectBox"
         @new-image-drawn="resizeAspectBox"
         @loading-end="resizeAspectBox"
+        @file-choose="files => $emit('input', files)"
         v-model="croppa"
         :width="width"
         :height="height"
         :quality="croppaQuality"
-        accept="image/*"
+        :accept="accept"
         :auto-sizing="true"
         placeholder
         canvas-color="#FFF"
@@ -103,26 +104,31 @@ import {
 
 import Croppa from "../Croppa/Croppa.vue";
 import { fieldMixin } from "../../utils/fieldMixin.js";
-import { vModelMixin } from "../../utils/vModelMixin.js";
 
 export default {
   name: "OctoFormImage",
-  mixins: [vModelMixin, fieldMixin],
+  mixins: [fieldMixin],
+  props: {
+    value: null
+  },
   components: {
     [Croppa.name]: Croppa
   },
   setup(props) {
     const refAspecRatioBox = ref(null);
     const instance = getCurrentInstance();
+
+    const { value } = { ...props };
     const state = reactive({
       croppa: {},
-      initialImg: props.value,
+      initialImg: value,
       width: props.field.width,
       height: props.field.height,
       hasFocus: props.field.has_focus,
       container: props.field.container,
       folder: props.field.folder,
       containerWidth: props.field.width,
+      accept: props.field.accept || "image/*",
       focus: props.field.focus || "50-50",
       isEditingFocus: false,
       posX: 50,

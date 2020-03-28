@@ -49,3 +49,13 @@
   width: 100%;
   border-top: 1px solid var(--octo-text-muted);
 }
+
+
+.octo-form-section {
+  display: flex;
+  align-items: center;
+
+  * + * {
+    margin-left: 0.5rem;
+  }
+}
