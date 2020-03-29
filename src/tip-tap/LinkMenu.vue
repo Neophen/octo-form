@@ -20,7 +20,6 @@
     <div v-if="linkType === 'link'">
       <o-input
         class="w-full"
-        name="url"
         v-model="url"
         @blur="updateUrl"
         @keydown.native.enter.prevent="updateUrl"
@@ -30,18 +29,9 @@
     </div>
     <div v-if="linkType === 'file'">
       <input type="file" hidden ref="fileInput" @change="handleInputChange" />
-      <div v-if="hasFile" class="overflow-hidded">
-        <o-text class="truncate mb-2" :title="url">{{ url }}</o-text>
-        <button
-          type="button"
-          class="text-highlight underline"
-          @click="chooseFile"
-        >
-          Change file
-        </button>
-      </div>
-      <o-button v-else @click="chooseFile" class="w-full" :loading="isLoading">
-        Select file
+      <o-text v-if="hasFile" style="__file-link">{{ url }}</o-text>
+      <o-button @click="chooseFile" class="w-full" :loading="isLoading">
+        {{ hasfile ? "Change file" : "Select file" }}
       </o-button>
     </div>
   </div>

@@ -69,6 +69,13 @@
     width: 100%;
   }
 
+  .__file-link {
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    border: 1px dashed var(--octo-muted-500);
+    padding: 0.2rem;
+  }
+
   .__radio {
     width: 100%;
     padding: 7px 10px;
