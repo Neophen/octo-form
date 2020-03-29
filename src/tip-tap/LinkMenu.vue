@@ -30,7 +30,7 @@
     <div v-if="linkType === 'file'">
       <input type="file" hidden ref="fileInput" @change="handleInputChange" />
       <div v-if="hasFile" class="__file-link">
-        <o-text>{{ url }}</o-text>
+        <o-text>{{ fileName(url) }}</o-text>
       </div>
       <o-button @click="chooseFile" class="w-full" :loading="isLoading">
         {{ hasFile ? "Change file" : "Select file" }}
@@ -91,6 +91,11 @@ export default {
       });
     };
 
+    const fileName = url => {
+      const all = url.split("/");
+      return all[all.length - 1];
+    };
+
     const chooseFile = () => {
       fileInput.value.click();
     };
@@ -140,6 +145,7 @@ export default {
 
     return {
       ...toRefs(state),
+      fileName,
       updateUrl,
       fileInput,
       chooseFile,

@@ -77,7 +77,8 @@
     border: 1px dashed var(--octo-muted-500);
     padding: .5rem;
     word-break: break-word;
-
+    max-height: 60px;
+    overflow-y: auto;
   }
 
   .__radio {
