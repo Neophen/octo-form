@@ -246,368 +246,374 @@ export const filmFieldset = {
   }
 };
 
-
 export const inputsFieldset = {
-  section_test: {
-    display: "Test",
-    type: "section",
-    can_toggle: true,
-  },
-  switch: {
-    display: "Switch",
-    type: "switch",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    show_when: { section_test: true }
-  },
-  show_if: {
-    display: "Show if switch is on",
-    type: "switch",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    show_when: { switch: true }
-  },
-  select_items: {
-    show_when: { section_test: true },
-    display: "Select items",
-    type: "select-items",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    options: [
-      {
-        label: 'Films',
-        value: "films",
-      },
-      {
-        label: 'Sponsors',
-        value: "sponsors",
-      },
-      {
-        label: 'Events',
-        value: "events",
-      },
-      {
-        label: 'Recommendations',
-        value: "recommendations",
-      },
-      {
-        label: 'Bundles',
-        value: "bundles",
-      },
-      {
-        label: "Genre tags",
-        value: 'genre-tags',
-      },
-      {
-        label: 'Sections',
-        value: "sections",
-      },
-
-    ]
-
-  },
-  date_range: {
-    show_when: { section_test: true },
-    display: "Date range",
-    minDate: 'today',
-    value: {
-      start: '2020-03-31T00:00:00.000000Z',
-      end: '2020-04-30T00:00:00.000000Z',
-    },
-    type: "date-range"
-  },
-  date_range_empty: {
-    show_when: { section_test: true },
-    display: "Date range empty",
-    minDate: 'today',
-    type: "date-range"
-  },
-  section_input: {
-    display: "Inputs",
-    type: "section",
-    can_toggle: true,
-  },
-  text: {
-    show_when: { section_input: true },
-    display: "Text",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    type: "text",
-    placeholder: 'Text input...',
-    validate: "max:150",
-    localizable: true
-  },
-  textarea: {
-    show_when: { section_input: true },
-    display: "Textarea",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    type: "textarea",
-    placeholder: 'Textarea input...',
-    validate: "max:1000",
-    localizable: true
-  },
   rich_text: {
-    show_when: { section_input: true },
-    display: "Rich text input",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    type: "textarea",
-    placeholder: 'Rich text input...',
-    localizable: true
-  },
-  radio_group: {
-    show_when: { section_input: true },
-    display: "Radio group",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    type: "radio-group",
-    default: "default",
-    options: {
-      default: "Default",
-      other: "Other"
-    }
-  },
-  label_select: {
-    show_when: { section_input: true },
-    display: "Label select",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    type: "label-select",
-    options: [
-      {
-        label: "Admin",
-        value: "admin",
-      },
-      {
-        label: "Editor",
-        value: "editor",
-      },
-      {
-        label: "Attendee",
-        value: "attendee",
-      },
-    ],
-  },
-  number: {
-    show_when: { section_input: true },
-    display: "Number",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    placeholder: 'Number input...',
-    type: "number",
-    min: 0,
-  },
-
-  year: {
-    show_when: { section_input: true },
-    display: "Year",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    type: "year",
-    placeholder: "Please select a year..",
-    min: 2000,
-  },
-  date: {
-    show_when: { section_input: true },
-    display: "Date",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    type: "date",
-    placeholder: "Please select a date..",
-    min: 2000,
-  },
-  partition_tags: {
-    type: 'partition',
-  },
-  section_tags: {
-    display: "Tags",
-    type: "section"
-  },
-  tag: {
-    display: "Tag",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    type: "single-tag",
-    placeholder: "Please select a tag...",
-    can_add: true,
-    add_config: {
-      title: "Add age restriction",
-      taxonomy: "age_restrictions",
-      fieldset: "taxonomies/age_restrictions_co",
-    },
-    options: [
-      {
-        label: 'Tag 1',
-        value: 'tag-1'
-      },
-      {
-        label: 'Tag 2',
-        value: 'tag-2'
-      },
-      {
-        label: 'Tag 3',
-        value: 'tag-3'
-      },
-      {
-        label: 'Tag 4',
-        value: 'tag-4'
-      },
-      {
-        label: 'Tag 5',
-        value: 'tag-5'
-      },
-      {
-        label: 'Tag 6',
-        value: 'tag-6'
-      },
-    ],
-  },
-  tags: {
-    display: "Tags",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    placeholder: "Select tags..",
-    type: "tags",
-    max_items: 3,
-    can_add: true,
-    add_config: {
-      title: "Add a genre",
-      taxonomy: "genres",
-      fieldset: "taxonomies/genres_co",
-    },
-    options: [
-      {
-        label: 'Tag 1',
-        value: 'tag-1'
-      },
-      {
-        label: 'Tag 2',
-        value: 'tag-2'
-      },
-      {
-        label: 'Tag 3',
-        value: 'tag-3'
-      },
-      {
-        label: 'Tag 4',
-        value: 'tag-4'
-      },
-      {
-        label: 'Tag 5',
-        value: 'tag-5'
-      },
-      {
-        label: 'Tag 6',
-        value: 'tag-6'
-      },
-    ],
-  },
-  list: {
-    display: "List",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    type: "list",
-    placeholder: 'List input...',
-    localizable: true
-  },
-  countries: {
-    display: "Countries",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    type: "countries",
-    placeholder: "Select countries...",
-  },
-  languages: {
-    display: "Languages",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    type: "languages",
-    placeholder: "Select languages..",
-  },
-  partition_images: {
-    type: 'partition',
-  },
-  section_Images: {
-    display: "Images",
-    type: "section",
-    can_toggle: true,
-  },
-  avatar: {
-    display: "Avatar",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    type: "avatar",
-    quality: 1,
-    width: 390,
-    height: 390,
-  },
-  image: {
-    display: "Image",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    // can_toggle: true,
-    has_focus: true,
-    validate: "required",
-    type: "image",
-    // value: "/DianaAndMe.jpg",
-    width: 1920,
-    height: 1080
-  },
-  images: {
-    display: "Images",
-    type: "images",
-    validate: "required",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    max_files: 3,
-    value: [
-      {
-        id: "some-id",
-        src: "/DianaAndMe.jpg",
-      }
-    ],
-    width: 1920,
-    height: 1080
+    display: "Test",
+    type: "rich-text",
   },
 };
+
+// export const inputsFieldset = {
+//   section_test: {
+//     display: "Test",
+//     type: "section",
+//     can_toggle: true,
+//   },
+//   switch: {
+//     display: "Switch",
+//     type: "switch",
+//     icon: "sample-badge",
+//     number: 1,
+//     tooltip: 'some tooltip',
+//     can_toggle: true,
+//     show_when: { section_test: true }
+//   },
+//   show_if: {
+//     display: "Show if switch is on",
+//     type: "switch",
+//     icon: "sample-badge",
+//     number: 1,
+//     tooltip: 'some tooltip',
+//     can_toggle: true,
+//     show_when: { switch: true }
+//   },
+//   select_items: {
+//     show_when: { section_test: true },
+//     display: "Select items",
+//     type: "select-items",
+//     icon: "sample-badge",
+//     number: 1,
+//     tooltip: 'some tooltip',
+//     can_toggle: true,
+//     options: [
+//       {
+//         label: 'Films',
+//         value: "films",
+//       },
+//       {
+//         label: 'Sponsors',
+//         value: "sponsors",
+//       },
+//       {
+//         label: 'Events',
+//         value: "events",
+//       },
+//       {
+//         label: 'Recommendations',
+//         value: "recommendations",
+//       },
+//       {
+//         label: 'Bundles',
+//         value: "bundles",
+//       },
+//       {
+//         label: "Genre tags",
+//         value: 'genre-tags',
+//       },
+//       {
+//         label: 'Sections',
+//         value: "sections",
+//       },
+
+//     ]
+
+//   },
+//   date_range: {
+//     show_when: { section_test: true },
+//     display: "Date range",
+//     minDate: 'today',
+//     value: {
+//       start: '2020-03-31T00:00:00.000000Z',
+//       end: '2020-04-30T00:00:00.000000Z',
+//     },
+//     type: "date-range"
+//   },
+//   date_range_empty: {
+//     show_when: { section_test: true },
+//     display: "Date range empty",
+//     minDate: 'today',
+//     type: "date-range"
+//   },
+//   section_input: {
+//     display: "Inputs",
+//     type: "section",
+//     can_toggle: true,
+//   },
+//   text: {
+//     show_when: { section_input: true },
+//     display: "Text",
+//     icon: "sample-badge",
+//     number: 1,
+//     tooltip: 'some tooltip',
+//     can_toggle: true,
+//     type: "text",
+//     placeholder: 'Text input...',
+//     validate: "max:150",
+//     localizable: true
+//   },
+//   textarea: {
+//     show_when: { section_input: true },
+//     display: "Textarea",
+//     icon: "sample-badge",
+//     number: 1,
+//     tooltip: 'some tooltip',
+//     can_toggle: true,
+//     type: "textarea",
+//     placeholder: 'Textarea input...',
+//     validate: "max:1000",
+//     localizable: true
+//   },
+//   rich_text: {
+//     show_when: { section_input: true },
+//     display: "Rich text input",
+//     icon: "sample-badge",
+//     number: 1,
+//     tooltip: 'some tooltip',
+//     can_toggle: true,
+//     type: "textarea",
+//     placeholder: 'Rich text input...',
+//     localizable: true
+//   },
+//   radio_group: {
+//     show_when: { section_input: true },
+//     display: "Radio group",
+//     icon: "sample-badge",
+//     number: 1,
+//     tooltip: 'some tooltip',
+//     can_toggle: true,
+//     type: "radio-group",
+//     default: "default",
+//     options: {
+//       default: "Default",
+//       other: "Other"
+//     }
+//   },
+//   label_select: {
+//     show_when: { section_input: true },
+//     display: "Label select",
+//     icon: "sample-badge",
+//     number: 1,
+//     tooltip: 'some tooltip',
+//     can_toggle: true,
+//     type: "label-select",
+//     options: [
+//       {
+//         label: "Admin",
+//         value: "admin",
+//       },
+//       {
+//         label: "Editor",
+//         value: "editor",
+//       },
+//       {
+//         label: "Attendee",
+//         value: "attendee",
+//       },
+//     ],
+//   },
+//   number: {
+//     show_when: { section_input: true },
+//     display: "Number",
+//     icon: "sample-badge",
+//     number: 1,
+//     tooltip: 'some tooltip',
+//     can_toggle: true,
+//     placeholder: 'Number input...',
+//     type: "number",
+//     min: 0,
+//   },
+
+//   year: {
+//     show_when: { section_input: true },
+//     display: "Year",
+//     icon: "sample-badge",
+//     number: 1,
+//     tooltip: 'some tooltip',
+//     can_toggle: true,
+//     type: "year",
+//     placeholder: "Please select a year..",
+//     min: 2000,
+//   },
+//   date: {
+//     show_when: { section_input: true },
+//     display: "Date",
+//     icon: "sample-badge",
+//     number: 1,
+//     tooltip: 'some tooltip',
+//     can_toggle: true,
+//     type: "date",
+//     placeholder: "Please select a date..",
+//     min: 2000,
+//   },
+//   partition_tags: {
+//     type: 'partition',
+//   },
+//   section_tags: {
+//     display: "Tags",
+//     type: "section"
+//   },
+//   tag: {
+//     display: "Tag",
+//     icon: "sample-badge",
+//     number: 1,
+//     tooltip: 'some tooltip',
+//     can_toggle: true,
+//     type: "single-tag",
+//     placeholder: "Please select a tag...",
+//     can_add: true,
+//     add_config: {
+//       title: "Add age restriction",
+//       taxonomy: "age_restrictions",
+//       fieldset: "taxonomies/age_restrictions_co",
+//     },
+//     options: [
+//       {
+//         label: 'Tag 1',
+//         value: 'tag-1'
+//       },
+//       {
+//         label: 'Tag 2',
+//         value: 'tag-2'
+//       },
+//       {
+//         label: 'Tag 3',
+//         value: 'tag-3'
+//       },
+//       {
+//         label: 'Tag 4',
+//         value: 'tag-4'
+//       },
+//       {
+//         label: 'Tag 5',
+//         value: 'tag-5'
+//       },
+//       {
+//         label: 'Tag 6',
+//         value: 'tag-6'
+//       },
+//     ],
+//   },
+//   tags: {
+//     display: "Tags",
+//     icon: "sample-badge",
+//     number: 1,
+//     tooltip: 'some tooltip',
+//     can_toggle: true,
+//     placeholder: "Select tags..",
+//     type: "tags",
+//     max_items: 3,
+//     can_add: true,
+//     add_config: {
+//       title: "Add a genre",
+//       taxonomy: "genres",
+//       fieldset: "taxonomies/genres_co",
+//     },
+//     options: [
+//       {
+//         label: 'Tag 1',
+//         value: 'tag-1'
+//       },
+//       {
+//         label: 'Tag 2',
+//         value: 'tag-2'
+//       },
+//       {
+//         label: 'Tag 3',
+//         value: 'tag-3'
+//       },
+//       {
+//         label: 'Tag 4',
+//         value: 'tag-4'
+//       },
+//       {
+//         label: 'Tag 5',
+//         value: 'tag-5'
+//       },
+//       {
+//         label: 'Tag 6',
+//         value: 'tag-6'
+//       },
+//     ],
+//   },
+//   list: {
+//     display: "List",
+//     icon: "sample-badge",
+//     number: 1,
+//     tooltip: 'some tooltip',
+//     can_toggle: true,
+//     type: "list",
+//     placeholder: 'List input...',
+//     localizable: true
+//   },
+//   countries: {
+//     display: "Countries",
+//     icon: "sample-badge",
+//     number: 1,
+//     tooltip: 'some tooltip',
+//     can_toggle: true,
+//     type: "countries",
+//     placeholder: "Select countries...",
+//   },
+//   languages: {
+//     display: "Languages",
+//     icon: "sample-badge",
+//     number: 1,
+//     tooltip: 'some tooltip',
+//     can_toggle: true,
+//     type: "languages",
+//     placeholder: "Select languages..",
+//   },
+//   partition_images: {
+//     type: 'partition',
+//   },
+//   section_Images: {
+//     display: "Images",
+//     type: "section",
+//     can_toggle: true,
+//   },
+//   avatar: {
+//     display: "Avatar",
+//     icon: "sample-badge",
+//     number: 1,
+//     tooltip: 'some tooltip',
+//     can_toggle: true,
+//     type: "avatar",
+//     quality: 1,
+//     width: 390,
+//     height: 390,
+//   },
+//   image: {
+//     display: "Image",
+//     icon: "sample-badge",
+//     number: 1,
+//     tooltip: 'some tooltip',
+//     // can_toggle: true,
+//     has_focus: true,
+//     validate: "required",
+//     type: "image",
+//     // value: "/DianaAndMe.jpg",
+//     width: 1920,
+//     height: 1080
+//   },
+//   images: {
+//     display: "Images",
+//     type: "images",
+//     validate: "required",
+//     icon: "sample-badge",
+//     number: 1,
+//     tooltip: 'some tooltip',
+//     can_toggle: true,
+//     max_files: 3,
+//     value: [
+//       {
+//         id: "some-id",
+//         src: "/DianaAndMe.jpg",
+//       }
+//     ],
+//     width: 1920,
+//     height: 1080
+//   },
+// };
 
 export const inputsFieldsetErrors = {
   text: ['text input is required'],

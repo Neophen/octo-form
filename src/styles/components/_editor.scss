@@ -1,0 +1,17 @@
+.octo-form-editor {
+  position: relative;
+
+  .editor__content {
+    min-height: 300px;
+    .ProseMirror {
+      // height: 100%;
+      &:focus {
+        outline: none;
+      }
+
+      * > a {
+        pointer-events: none;
+      }
+    }
+  }
+}

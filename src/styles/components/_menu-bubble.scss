@@ -1,0 +1,84 @@
+.octo-form-menu-bubble {
+  position: absolute;
+  z-index: 20;
+  transform: translateX(-50%);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s, visibility 0.2s;
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.octo-form-menu-bubble__card {
+  background: white;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+  border-radius: var(--octo-radius-default);
+  overflow: hidden;
+  &.is-flex {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+.octo-form-menu-bubble__btn {
+  width: 37px;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .octo-form-menu-bubble_icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:focus {
+    outline: 0;
+    // @apply shadow-positive;
+  }
+
+  &:hover {
+    background: #ececec;
+  }
+
+  &.is-active {
+    background: var(--octo-primary-500);
+    color: var(--octo-text-inverted);
+    &:hover {
+      background: var(--octo-primary-500);
+    }
+  }
+}
+
+.octo-form-menu-bubble__link-menu {
+  overflow: hidden;
+  margin-top: 1rem;
+  padding: 1.25rem;
+  z-index: 10;
+
+  .__separator {
+    width: 100%;
+    border-bottom: 1px solid black;
+    margin: 1.25rem 0;
+  }
+
+  .w-full {
+    width: 100%;
+  }
+
+  .__radio {
+    width: 100%;
+    padding: 7px 10px;
+    border-radius: var(--octo-radius-full);
+    &.has-margin {
+      margin-top: 0.5rem;
+    }
+
+    &:hover {
+      background: var(--octo-muted-100);
+    }
+  }
+}
