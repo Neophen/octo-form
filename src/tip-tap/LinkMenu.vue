@@ -29,7 +29,9 @@
     </div>
     <div v-if="linkType === 'file'">
       <input type="file" hidden ref="fileInput" @change="handleInputChange" />
-      <o-text v-if="hasFile" style="__file-link">{{ url }}</o-text>
+      <div v-if="hasFile" class="__file-link">
+        <o-text>{{ url }}</o-text>
+      </div>
       <o-button @click="chooseFile" class="w-full" :loading="isLoading">
         {{ hasfile ? "Change file" : "Select file" }}
       </o-button>
