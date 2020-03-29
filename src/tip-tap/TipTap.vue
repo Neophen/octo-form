@@ -72,7 +72,6 @@ export default {
   },
   mounted() {
     this.initEditor();
-    console.log(this.editor);
   },
   beforeDestroy() {
     this.editor.destroy();
