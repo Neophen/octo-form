@@ -33,7 +33,7 @@
         <o-text>{{ url }}</o-text>
       </div>
       <o-button @click="chooseFile" class="w-full" :loading="isLoading">
-        {{ hasfile ? "Change file" : "Select file" }}
+        {{ hasFile ? "Change file" : "Select file" }}
       </o-button>
     </div>
   </div>
