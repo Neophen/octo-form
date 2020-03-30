@@ -3,13 +3,15 @@
     <editor-menu-bubble
       :editor="editor"
       :keep-in-bounds="false"
-      @hide="hideLinkMenu"
-      v-slot="{ commands, isActive, menu, getMarkAttrs }"
+      @hide="hideMenuBubble"
+      @show="showMenuBubble"
+      v-slot="{ menu, getMarkAttrs }"
     >
       <div
+        ref="refMenuBubble"
         class="octo-form-menu-bubble"
-        :style="`left: ${menu.left}px; top: ${menu.top + 10}px;`"
         :class="{ 'is-active': menu.isActive }"
+        :style="`left: ${menu.left}px; top: ${menu.top + 10}px;`"
       >
         <div class="octo-form-menu-bubble__card is-flex">
           <button
@@ -87,7 +89,6 @@
 
 <script>
 import { reactive, toRefs } from "@vue/composition-api";
-
 import { EditorMenuBubble } from "tiptap";
 
 import LinkMenu from "./LinkMenu.vue";
@@ -100,12 +101,18 @@ export default {
   },
   props: {
     editor: null,
-    field: null
+    field: null,
+    editorRef: null
   },
-  setup() {
+  setup(props) {
     const state = reactive({
       isLinkMenuOpen: false,
-      linkAttributes: {}
+      linkAttributes: {},
+      popper: null,
+      isPopperOpen: false,
+      selectionRef: null,
+      commands: props.editor.commands,
+      isActive: props.editor.isActive
     });
 
     const hideLinkMenu = () => {
@@ -122,10 +129,22 @@ export default {
       state.linkAttributes = attrs;
     };
 
+    // // Popper
+    const hideMenuBubble = () => {
+      hideLinkMenu();
+      // destroyPopper();
+    };
+
+    const showMenuBubble = () => {
+      // initPopper();
+    };
+
     return {
       ...toRefs(state),
       hideLinkMenu,
-      showLinkMenu
+      showLinkMenu,
+      showMenuBubble,
+      hideMenuBubble
     };
   }
 };

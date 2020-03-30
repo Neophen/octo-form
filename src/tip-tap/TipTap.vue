@@ -1,7 +1,7 @@
 <template>
   <div class="octo-form-editor">
-    <menu-bubble :editor="editor" :field="field" />
-    <div class="octo-control" @click="focusEditor">
+    <menu-bubble :editor="editor" :field="field" :editorRef="$refs.editorRef" />
+    <div class="octo-control" ref="editorRef" @click="focusEditor">
       <editor-content
         class="editor__content textarea"
         :class="{ 'is-primary': editor.focused }"

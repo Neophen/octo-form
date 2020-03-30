@@ -1,82 +1,73 @@
-import { reactive, toRefs, ref, onBeforeUnmount } from "@vue/composition-api";
-import { createPopper } from "@popperjs/core";
+export default class SelectionRef {
+  constructor(node) {
+    this.updateRect();
 
-export const usePopper = (root = null) => {
-  const refTrigger = ref(null);
-  const refDropdown = ref(null);
+    const update = (evt, hide) => {
+      // console.log(evt);
+      let selection = document.getSelection();
 
-  const state = reactive({
-    popper: null,
-    destroyPopperTimeout: null
-  });
+      this.range = selection && selection.rangeCount && selection.getRangeAt(0);
 
-  const isElement = element =>
-    element instanceof Element || element instanceof HTMLDocument;
+      this.updateRect(hide);
+    };
 
-  const setupPopper = (offset = [0, 0], placement = "bottom") => {
-    const reference = isElement(refTrigger.value)
-      ? refTrigger.value
-      : refTrigger.value.$el;
+    const updateMouseMove = (evt, hide) => {
+      if (!this.mouseDown) return;
 
-    const dropdown = isElement(refDropdown.value)
-      ? refDropdown.value
-      : refDropdown.value.$el;
+      console.log(hide);
+      console.log("mooving mouse");
+      let selection = document.getSelection();
+      console.log(selection);
 
-    state.popper = createPopper(reference, dropdown, {
-      placement,
-      modifiers: [
-        {
-          name: "offset",
-          options: {
-            offset
-          }
-        }
-      ]
-    });
-  };
+      this.range = selection && selection.rangeCount && selection.getRangeAt(0);
+      console.log(this.range);
 
-  const setupPopperWithTimeout = (offset = [0, 0], placement = "bottom") => {
-    if (state.destroyPopperTimeout) {
-      clearTimeout(state.destroyPopperTimeout);
-      state.destroyPopperTimeout = null;
-    }
-    root.$nextTick(() => {
-      setupPopper(offset, placement);
-    });
-  };
+      this.updateRect(hide);
+    };
 
-  const destroyPopper = () => {
-    if (state.popper) {
-      state.popper.destroy();
-      state.popper = null;
-    }
-  };
+    const startMouseSelect = () => {
+      console.log("start mouse");
+      this.mouseDown = true;
+    };
 
-  const destroyPopperWithTimeout = (time = 200) => {
-    if (state.popper) {
-      state.destroyPopperTimeout = setTimeout(function() {
-        state.popper.destroy();
-        state.popper = null;
-        state.destroyPopperTimeout = null;
-      }, time);
-    }
-  };
+    const stopMouseSelect = () => {
+      console.log("stop mouse");
+      this.mouseDown = false;
+    };
 
-  onBeforeUnmount(() => {
-    if (state.destroyPopperTimeout) {
-      destroyPopperWithTimeout();
+    node.addEventListener("mousedown", startMouseSelect);
+    node.addEventListener("mouseup", stopMouseSelect);
+    node.addEventListener("mouseup", update);
+    node.addEventListener("input", update);
+    node.addEventListener("keydown", evt => update(evt, false));
+
+    window.addEventListener("scroll", update);
+    window.addEventListener("mousemove", updateMouseMove);
+    document.scrollingElement.addEventListener("scroll", update);
+  }
+
+  updateRect(hide) {
+    if (!hide && this.range) {
+      this.rect = this.range.getBoundingClientRect();
     } else {
-      destroyPopper();
+      this.rect = {
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        width: 0,
+        height: 0
+      };
     }
-  });
 
-  return {
-    ...toRefs(state),
-    refTrigger,
-    refDropdown,
-    setupPopper,
-    destroyPopper,
-    setupPopperWithTimeout,
-    destroyPopperWithTimeout
-  };
-};
+    this.rectChangedCallback(this.rect);
+  }
+
+  rectChangedCallback() {
+    // Abstract to be implemented
+  }
+
+  getBoundingClientRect() {
+    return this.rect;
+  }
+}
