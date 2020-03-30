@@ -142,7 +142,7 @@ export default {
     );
 
     const containerStyle = computed(() =>
-      state.max_width ? `max-width: ${state.max_width}; margin: 0 auto;` : ""
+      state.max_width ? `max-width: ${state.max_width};` : ""
     );
 
     const resizeAspectBox = () => {
