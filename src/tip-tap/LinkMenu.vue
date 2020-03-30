@@ -107,7 +107,7 @@ export default {
       let file = input.files[0];
 
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append(props.field.container, file);
       formData.append("type", "file");
       formData.append("container", props.field.container);
       formData.append("folder", props.field.folder);
