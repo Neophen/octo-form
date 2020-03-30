@@ -37,7 +37,7 @@
     "@vue/cli-plugin-eslint": "~4.2.0",
     "@vue/cli-plugin-unit-jest": "~4.2.0",
     "@vue/cli-service": "~4.2.0",
-    "@vue/composition-api": "^0.4.0",
+    "@vue/composition-api": "^0.5.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/test-utils": "1.0.0-beta.31",
     "axios": "^0.19.2",
@@ -61,7 +61,7 @@
   },
   "peerDependencies": {
     "vue": "^2.6.11",
-    "@vue/composition-api": "^0.4.0",
+    "@vue/composition-api": "^0.5.0",
     "@popperjs/core": "^2.0.6",
     "portal-vue": "^2.1.7",
     "@mykolasm/octo-ui": "^0.1.*",
