@@ -122,6 +122,7 @@ export default {
     const state = reactive({
       croppa: {},
       initialImg: value,
+      max_width: props.field.max_width,
       width: props.field.width,
       height: props.field.height,
       hasFocus: props.field.has_focus,
@@ -136,7 +137,11 @@ export default {
     });
 
     const aspectRatioStyle = computed(() => {
-      return `padding-top: calc(${state.height} / ${state.width} * 100%);`;
+      let styles = `padding-top: calc(${state.height} / ${state.width} * 100%);`;
+      if (state.max_width) {
+        styles = `${styles} max-width: ${state.max_width};`;
+      }
+      return styles;
     });
 
     const resizeAspectBox = () => {

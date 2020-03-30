@@ -22,6 +22,7 @@ export default {
       valueImage: "/DianaAndMe.jpg",
       field: {
         display: "",
+        max_width: "300px",
         width: 1920,
         height: 600,
       }
