@@ -10,6 +10,7 @@
     :number="fieldNumber"
     :hasValue="!!value"
     class="octo-image"
+    :style="containerStyle"
   >
     <div
       ref="refAspecRatioBox"
@@ -136,13 +137,13 @@ export default {
       posY: 50
     });
 
-    const aspectRatioStyle = computed(() => {
-      let styles = `padding-top: calc(${state.height} / ${state.width} * 100%);`;
-      if (state.max_width) {
-        styles = `${styles} max-width: ${state.max_width};`;
-      }
-      return styles;
-    });
+    const aspectRatioStyle = computed(
+      () => `padding-top: calc((${state.height} / ${state.width} ) * 100%);`
+    );
+
+    const containerStyle = computed(() =>
+      state.max_width ? `max-width: ${state.max_width}; margin: 0 auto;` : ""
+    );
 
     const resizeAspectBox = () => {
       if (!refAspecRatioBox.value) return;
@@ -226,6 +227,7 @@ export default {
       ...toRefs(state),
       prepare,
       aspectRatioStyle,
+      containerStyle,
       download,
       refAspecRatioBox,
       croppaQuality,
