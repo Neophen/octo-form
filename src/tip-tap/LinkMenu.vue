@@ -115,10 +115,15 @@ export default {
       state.isLoading = true;
 
       if (state.hasFile) {
-        window.axios.post(props.field.delete_url, {
-          _method: "delete",
-          url: state.url
-        });
+        try {
+          window.axios.post(props.field.delete_url, {
+            _method: "delete",
+            url: state.url
+          });
+        } catch (error) {
+          //! we don't care if this erros out
+          //! as we just send this as indication that you could do something about it.
+        }
       }
 
       try {
