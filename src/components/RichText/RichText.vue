@@ -10,8 +10,8 @@
     :number="fieldNumber"
     :hasValue="!!computedValue"
   >
-    <input :name="key" type="textarea" :value="computedValue" hidden />
-    <tip-tap v-model="computedValue" :field="field" />
+    <textarea :name="key" :value="computedValue" hidden />
+    <tip-tap v-model="computedValue" :field="field" :key="key" />
   </o-field>
 </template>
 

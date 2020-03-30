@@ -1,6 +1,11 @@
 <template>
   <div class="octo-form-editor">
-    <menu-bubble :editor="editor" :field="field" :editorRef="$refs.editorRef" />
+    <menu-bubble
+      :editor="editor"
+      :field="field"
+      :editorRef="$refs.editorRef"
+      :field-key="$vnode.key"
+    />
     <div class="octo-control" ref="editorRef" @click="focusEditor">
       <editor-content
         class="editor__content textarea"

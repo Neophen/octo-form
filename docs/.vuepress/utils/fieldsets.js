@@ -251,6 +251,10 @@ export const inputsFieldset = {
     display: "Test",
     type: "rich-text",
   },
+  rich_text_2: {
+    display: "Test 2",
+    type: "rich-text",
+  },
 };
 
 // export const inputsFieldset = {

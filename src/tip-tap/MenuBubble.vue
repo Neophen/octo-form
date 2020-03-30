@@ -1,6 +1,7 @@
 <template>
-  <portal to="octo-popups">
+  <portal to="octo-popups-multiple">
     <editor-menu-bubble
+      :key="fieldKey"
       :editor="editor"
       :keep-in-bounds="false"
       @hide="hideMenuBubble"
@@ -102,7 +103,8 @@ export default {
   props: {
     editor: null,
     field: null,
-    editorRef: null
+    editorRef: null,
+    fieldKey: String
   },
   setup(props) {
     const state = reactive({
