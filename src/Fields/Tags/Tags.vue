@@ -1,7 +1,7 @@
 <template>
   <div>
     <input
-      v-if="value.length === 0"
+      v-if="value == null || value.length === 0"
       type="text"
       :name="key"
       :value="null"

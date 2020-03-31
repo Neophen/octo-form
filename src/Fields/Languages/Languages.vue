@@ -1,7 +1,7 @@
 <template>
   <div>
     <input
-      v-if="value.length === 0"
+      v-if="value == null || value.length === 0"
       type="text"
       :name="key"
       :value="null"
@@ -31,7 +31,7 @@
         v-model="selectedItems"
         :key="key"
         :maxtags="maxtags"
-        :data="filterdItems"
+        :data="filteredItems"
         :disabled="disabled"
         autocomplete
         :open-on-focus="true"
@@ -60,7 +60,7 @@ export default {
   data() {
     return {
       items: languages,
-      filterdItems: languages
+      filteredItems: languages
     };
   },
   computed: {
@@ -78,7 +78,7 @@ export default {
         const emited = value.map(term => term.value);
         this.$emit("input", emited);
         this.$nextTick(function() {
-          this.filterdItems = this.nonDuplicates;
+          this.filteredItems = this.nonDuplicates;
         });
       }
     }
@@ -89,10 +89,10 @@ export default {
     },
     getFilteredItems(text) {
       if (!text) {
-        this.filterdItems = this.nonDuplicates;
+        this.filteredItems = this.nonDuplicates;
         return;
       }
-      this.filterdItems = this.nonDuplicates.filter(option =>
+      this.filteredItems = this.nonDuplicates.filter(option =>
         option.label
           .toString()
           .toLowerCase()
