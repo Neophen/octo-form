@@ -177,6 +177,8 @@ export default {
           height: props.field.height,
           has_focus: props.field.has_focus,
           container: props.field.container,
+          submit_type: props.field.submit_type,
+          quality: props.field.quality,
           folder: props.field.folder
         },
         image_id: {
@@ -202,6 +204,8 @@ export default {
           height: props.field.height,
           hasFocus: props.field.has_focus,
           container: props.field.container,
+          submit_type: props.field.submit_type,
+          quality: props.field.quality,
           folder: props.field.folder
         },
         image_id: {

@@ -124,6 +124,8 @@ export default {
       croppa: {},
       initialImg: value,
       max_width: props.field.max_width,
+      quality: props.field.quality ? Number(props.field.quality) : 1,
+      submitType: props.field.submit_type,
       width: props.field.width,
       height: props.field.height,
       hasFocus: props.field.has_focus,
@@ -168,10 +170,11 @@ export default {
     const prepare = async () => {
       if (!state.croppa.chosenFile) return;
 
-      const file = await state.croppa.promisedBlob(
-        state.croppa.chosenFile.type,
-        1
-      );
+      const type = state.submitType
+        ? state.submitType
+        : state.croppa.chosenFile.type;
+
+      const file = await state.croppa.promisedBlob(type, state.quality);
 
       return [
         {

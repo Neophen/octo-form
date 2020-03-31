@@ -6,11 +6,13 @@ import OctoUI from '@mykolasm/octo-ui';
 import "@mykolasm/octo-ui/dist/octo-ui.css";
 
 import OctoForm from '../../src/main.js';
+import Image from '../../src/Fields/Image';
 
 export default ({ Vue }) => {
 
   Vue.component('ValidationProvider', ValidationProvider);
   Vue.component('ValidationObserver', ValidationObserver);
+  Vue.component(Image.name, Image);
   Vue.use(VueCompositionApi);
   Vue.use(PortalVue);
   Vue.use(OctoUI, {
