@@ -24,7 +24,7 @@
 
 <script>
 import { computed, getCurrentInstance } from "@vue/composition-api";
-import { useVModel } from "../../utils/useVModel.js";
+import { useVModel } from "../utils/useVModel.js";
 
 export default {
   name: "OctoFormField",

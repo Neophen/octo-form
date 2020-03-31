@@ -18,15 +18,16 @@
           :dusk="formConfig.secondaryDusk"
           :disabled="loading"
           @click="formState.secondaryAction"
-          >{{ formConfig.secondary }}</o-button
         >
+          {{ formConfig.secondary }}
+        </o-button>
         <o-checkbox
           v-if="formState.type === 'accept'"
           v-model="acceptTermsConditions"
           class="octo-form__cancel-btn"
           :name="formConfig.acceptName"
         >
-          <slot name="accept"></slot>
+          <slot name="accept" />
         </o-checkbox>
         <o-button
           native-type="submit"
@@ -35,8 +36,9 @@
           :dusk="formConfig.confirmDusk"
           :loading="loading"
           :disabled="!canSubmit"
-          >{{ formConfig.confirm }}</o-button
         >
+          {{ formConfig.confirm }}
+        </o-button>
       </div>
     </form>
   </validation-observer>
@@ -44,13 +46,8 @@
 
 <script>
 import { reactive, toRefs, ref, computed, watch } from "@vue/composition-api";
-import Field from "../Field/Field.vue";
-
 export default {
   name: "OctoForm",
-  components: {
-    [Field.name]: Field
-  },
   props: {
     fieldset: {
       type: Object,

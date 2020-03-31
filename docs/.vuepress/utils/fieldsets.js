@@ -255,6 +255,24 @@ export const inputsFieldset = {
     display: "Test 2",
     type: "rich-text",
   },
+    images: {
+    display: "Images",
+    type: "images",
+    validate: "required",
+    icon: "sample-badge",
+    number: 1,
+    tooltip: 'some tooltip',
+    can_toggle: true,
+    max_files: 3,
+    value: [
+      {
+        id: "some-id",
+        src: "/DianaAndMe.jpg",
+      }
+    ],
+    width: 1920,
+    height: 1080
+  },
 };
 
 // export const inputsFieldset = {
