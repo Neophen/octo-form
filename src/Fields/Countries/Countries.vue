@@ -1,6 +1,8 @@
 <template>
   <div>
+    <input v-if="value.length === 0" type="text" :name="`${key}[]`" hidden />
     <input
+      v-else
       v-for="val in value"
       type="text"
       :name="`${key}[]`"
