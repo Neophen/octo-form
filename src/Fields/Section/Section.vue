@@ -17,7 +17,7 @@ export default {
   setup(props, { emit }) {
     const state = reactive({
       canToggle: props.field.can_toggle,
-      isOpen: props.value ? props.value : false
+      isOpen: props.value || false
     });
 
     watch(

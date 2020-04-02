@@ -36,12 +36,8 @@ export default {
   },
   setup(props, { emit }) {
     const checkedOptions = computed({
-      get() {
-        if (!props.value) return [];
-        return props.value;
-      },
-      set(value) {
-        // const emited = value && Array.isArray(value) ? value : [];
+      get: () => props.value || [],
+      set: value => {
         emit("input", value);
       }
     });

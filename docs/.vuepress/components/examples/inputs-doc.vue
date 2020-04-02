@@ -59,7 +59,7 @@ export default {
 .docs-debug-content {
   $top: 40px;
   width: 500px;
-  height: calc(100vh - $top);
+  height: calc(100vh - 40px);
   height: 100vh;
   position: fixed;
   top: $top;

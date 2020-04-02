@@ -27,11 +27,12 @@
       :number="fieldNumber"
       :hasValue="selectedItems.length > 0"
     >
-      <o-tags
+      <o-inline-tag-input
         v-model="selectedItems"
         :disabled="disabled"
-        :allow-duplicates="true"
         :placeholder="placeholder"
+        :has-counter="true"
+        :maxtags="maxtags"
         expanded
       />
     </o-field>
@@ -47,8 +48,7 @@ export default {
   computed: {
     selectedItems: {
       get() {
-        if (!this.value) return [];
-        return this.value;
+        return this.value || [];
       },
       set(value) {
         this.$emit("input", value);

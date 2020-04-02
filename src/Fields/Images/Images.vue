@@ -88,7 +88,7 @@ export default {
 
     const state = reactive({
       isOpen: false,
-      images: props.value ? props.value : [],
+      images: props.value || [],
       width: props.field.width,
       height: props.field.height,
       hasFocus: props.field.has_focus,
@@ -240,12 +240,12 @@ export default {
 
       state.images.forEach(image => {
         const imgKey = `${key}_${image.id}`;
-        const file = image.file ? image.file : image.src;
-        const isFile = typeof file === "string" ? false : true;
+        const file = image.file || image.src;
+        const isFile = typeof file !== "string";
         config.push({ id: imgKey, is_image: isFile });
         imgsData.push({
           key: imgKey,
-          value: image.file ? image.file : image.src
+          value: image.file || image.src
         });
         imgsData.push({ key: `${imgKey}_focus`, value: image.focus });
       });

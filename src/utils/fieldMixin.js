@@ -7,8 +7,7 @@ export const fieldMixin = {
   },
   methods: {
     getRule(rule) {
-      if (!this.hasRule(rule)) return null;
-      return this.rules[rule];
+      return this.hasRule(rule) ? this.rules[rule] : null;
     },
     hasRule(rule) {
       return Object.prototype.hasOwnProperty.call(this.rules, rule);
@@ -50,7 +49,7 @@ export const fieldMixin = {
       return allRules;
     },
     options() {
-      return this.field.options ? this.field.options : {};
+      return this.field.options || [];
     },
     maxtags() {
       return this.field.max_items;

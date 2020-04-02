@@ -25,107 +25,34 @@
       :label-for="key"
       :icon="fieldIcon"
       :number="fieldNumber"
-      :hasValue="selectedTags.length > 0"
+      :hasValue="selectedOptions.length > 0"
     >
-      <o-tags
-        v-model="selectedTags"
+      <o-inline-select-tags
+        v-model="selectedOptions"
         :key="key"
+        :has-counter="true"
         :maxtags="maxtags"
-        :data="displayTags"
+        :data="displayOptions"
         :disabled="disabled"
-        autocomplete
         :open-on-focus="openOnFocus"
-        :allow-new="allowNew"
         field="label"
-        :allow-duplicates="false"
         :placeholder="placeholder"
-        @typing="getFilteredTags"
+        :ellipsis="false"
         expanded
-      >
-        <template slot-scope="props">{{ props.option.label }}</template>
-        <template slot="empty">There are no items</template>
-      </o-tags>
+      />
     </o-field>
   </div>
 </template>
 
 <script>
-import { fieldMixin } from "../../utils/fieldMixin.js";
-import { vModelMixin } from "../../utils/vModelMixin.js";
+import { fieldMixin, useOptions } from "../../utils";
 export default {
   name: "OctoFormTags",
-  mixins: [vModelMixin, fieldMixin],
-  data() {
-    return {
-      filteredTags: []
-    };
-  },
-  computed: {
-    openOnFocus() {
-      if (this.field.open_on_focus !== undefined) {
-        return this.field.open_on_focus;
-      }
-
-      return true;
-    },
-    allowNew() {
-      return this.field.allow_new;
-    },
-    tags() {
-      return this.field.options;
-    },
-    displayTags() {
-      return this.filteredTags.length > 0
-        ? this.filteredTags
-        : this.nonDuplicates;
-    },
-    nonDuplicates() {
-      return this.tags.filter(tag => {
-        if (!this.value) return true;
-        const existingTags = this.value.map(x => x.toLowerCase());
-        const tagValueExists = existingTags.includes(tag.value);
-        if (tagValueExists) return false;
-
-        const tagLabelExists = existingTags.includes(tag.label.toLowerCase());
-
-        return !tagLabelExists;
-      });
-    },
-    selectedTags: {
-      get() {
-        if (!this.value) return [];
-        return this.value.map(tagValue => {
-          const tag = this.findTag(tagValue);
-          if (tag) {
-            return tag;
-          }
-          return tagValue;
-        });
-      },
-      set(tags) {
-        const emitted = tags.map(tag => {
-          if (typeof tag === "string") {
-            return tag;
-          }
-          return tag.value;
-        });
-        this.$emit("input", emitted);
-      }
-    }
-  },
-  methods: {
-    findTag(value) {
-      return this.tags.find(tag => tag.value === value);
-    },
-    getFilteredTags(text) {
-      this.filteredTags = this.nonDuplicates.filter(
-        option =>
-          option.label
-            .toString()
-            .toLowerCase()
-            .indexOf(text.toLowerCase()) >= 0
-      );
-    }
+  mixins: [fieldMixin],
+  props: ["value"],
+  setup(props) {
+    const state = useOptions(props);
+    return { ...state };
   }
 };
 </script>

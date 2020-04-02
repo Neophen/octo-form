@@ -25,80 +25,35 @@
       :label-for="key"
       :icon="fieldIcon"
       :number="fieldNumber"
-      :hasValue="!!computedValue"
+      :hasValue="selectedOptions.length > 0"
     >
-      <o-tags
-        v-model="selectedItems"
+      <o-inline-select-tags
+        v-model="selectedOptions"
         :key="key"
+        :has-counter="true"
         :maxtags="maxtags"
-        :data="filterdItems"
+        :data="displayOptions"
         :disabled="disabled"
-        autocomplete
         :open-on-focus="true"
         field="label"
-        :allow-duplicates="false"
         :placeholder="placeholder"
-        @typing="getFilteredItems"
         expanded
-      >
-        <template slot-scope="props">{{ props.option.label }}</template>
-        <template slot="empty">There are no items</template>
-      </o-tags>
+      />
     </o-field>
   </div>
 </template>
 
 <script>
-import { fieldMixin } from "../../utils/fieldMixin.js";
-import { vModelMixin } from "../../utils/vModelMixin.js";
+import { fieldMixin, useOptions } from "../../utils";
 
 import { countries } from "../../utils/countries.js";
 
 export default {
   name: "OctoFormCountries",
-  mixins: [vModelMixin, fieldMixin],
-  data() {
-    return {
-      items: countries,
-      filterdItems: countries
-    };
-  },
-  computed: {
-    nonDuplicates() {
-      return this.items.filter(option =>
-        this.value ? !this.value.includes(option.value) : true
-      );
-    },
-    selectedItems: {
-      get() {
-        if (!this.value) return [];
-        return this.value.map(val => this.findItem(val));
-      },
-      set(value) {
-        const emited = value.map(term => term.value);
-        this.$emit("input", emited);
-        this.$nextTick(function() {
-          this.filterdItems = this.nonDuplicates;
-        });
-      }
-    }
-  },
-  methods: {
-    findItem(value) {
-      return this.items.find(item => item.value === value);
-    },
-    getFilteredItems(text) {
-      if (!text) {
-        this.filterdItems = this.nonDuplicates;
-        return;
-      }
-      this.filterdItems = this.nonDuplicates.filter(option =>
-        option.label
-          .toString()
-          .toLowerCase()
-          .startsWith(text.toLowerCase())
-      );
-    }
+  mixins: [fieldMixin],
+  props: ["value"],
+  setup(props) {
+    return { ...useOptions(props, countries) };
   }
 };
 </script>
