@@ -1,0 +1,16 @@
+.octo-form-svg {
+  position: relative;
+
+  .octo-form-svg__image {
+    height: 100px;
+    width: 100px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: var(--octo-radius-default);
+    border: 1px dashed var(--octo-muted-500);
+    .preview {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

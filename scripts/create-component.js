@@ -44,8 +44,8 @@ const argv = yargs.help().alias("help", "h").argv;
 const name = argv._[0];
 const kebabName = kebabCase(name);
 
-const componentDir = `./src/components/${name}`;
-const componentsIndex = `./src/components/index.js`;
+const componentDir = `./src/Fields/${name}`;
+const componentsIndex = `./src/Fields/index.js`;
 
 appendLine(componentsIndex, `export { default as ${name} } from "./${name}";`);
 

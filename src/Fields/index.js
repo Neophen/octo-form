@@ -22,3 +22,4 @@ export { default as Tags } from "./Tags";
 export { default as Text } from "./Text";
 export { default as Textarea } from "./Textarea";
 export { default as Year } from "./Year";
+export { default as Svg } from "./Svg";

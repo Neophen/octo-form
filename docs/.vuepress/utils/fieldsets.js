@@ -276,6 +276,11 @@ export const filmFieldset = {
 // };
 
 export const inputsFieldset = {
+  svg: {
+    display: "SVG upload",
+    type: "svg",
+    // can_toggle: true,
+  },
   section_test: {
     display: "Test",
     type: "section",
