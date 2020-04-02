@@ -13,9 +13,9 @@
     <div class="octo-form-svg">
       <input
         type="file"
+        :name="key"
         @change="previewImage"
         accept=".svg"
-        name=""
         hidden
         ref="inputRef"
       />
