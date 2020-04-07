@@ -8,11 +8,11 @@
     :label-for="key"
     :icon="fieldIcon"
     :number="fieldNumber"
-    :hasValue="!!computedValue"
+    :hasValue="!!computedDate"
   >
     <o-datepicker
       :key="key"
-      v-model="computedValue"
+      v-model="computedDate"
       :disabled="disabled"
       :max-date="maxDate"
       :min-date="minDate"
@@ -25,33 +25,32 @@
 </template>
 
 <script>
+import { computed } from "@vue/composition-api";
 import { fieldMixin } from "../../utils/fieldMixin.js";
 import { addDays, parseDate } from "../../utils/dateUtils";
-import { computed, toRefs, reactive, watch } from "@vue/composition-api";
+
 export default {
   name: "OctoFormDate",
   mixins: [fieldMixin],
-  props: {
-    value: {
-      type: Object
-    }
-  },
+  props: ["value"],
   setup(props, { emit }) {
     const getDate = date => {
       if (!date) return null;
       return parseDate(date, props.field.timezone);
     };
 
-    const state = reactive({
-      date: getDate(props.field.value)
-    });
+    const computedDate = computed({
+      get() {
+        if (typeof props.field.value === "string") {
+          return getDate(props.field.value);
+        }
 
-    watch(
-      () => state.date,
-      date => {
-        emit("input", date);
+        return props.field.value;
+      },
+      set(value) {
+        emit("input", value);
       }
-    );
+    });
 
     const minDate = computed(() => {
       if (!props.field.minDate) return null;
@@ -69,7 +68,7 @@ export default {
     });
 
     return {
-      ...toRefs(state),
+      computedDate,
       minDate,
       maxDate
     };
