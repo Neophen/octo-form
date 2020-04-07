@@ -26,25 +26,53 @@
 
 <script>
 import { fieldMixin } from "../../utils/fieldMixin.js";
-import { vModelMixin } from "../../utils/vModelMixin.js";
 import { addDays, parseDate } from "../../utils/dateUtils";
+import { computed, toRefs, reactive, watch } from "@vue/composition-api";
 export default {
   name: "OctoFormDate",
-  mixins: [vModelMixin, fieldMixin],
-  computed: {
-    minDate() {
-      if (!this.field.minDate) return null;
+  mixins: [fieldMixin],
+  props: {
+    value: {
+      type: Object
+    }
+  },
+  setup(props, { emit }) {
+    const getDate = date => {
+      if (!date) return null;
+      return parseDate(date, props.field.timezone);
+    };
 
-      if (this.field.minDate === "today") {
+    const state = reactive({
+      date: getDate(props.field.value)
+    });
+
+    watch(
+      () => state.date,
+      date => {
+        emit("input", date);
+      }
+    );
+
+    const minDate = computed(() => {
+      if (!props.field.minDate) return null;
+
+      if (props.field.minDate === "today") {
         return addDays(new Date(), -1);
       }
 
-      return parseDate(this.field.minDate, this.field.timezone);
-    },
-    maxDate() {
-      if (!this.field.maxDate) return null;
-      return parseDate(this.field.maxDate, this.field.timezone);
-    }
+      return parseDate(props.field.minDate, props.field.timezone);
+    });
+
+    const maxDate = computed(() => {
+      if (!props.field.maxDate) return null;
+      return parseDate(props.field.maxDate, props.field.timezone);
+    });
+
+    return {
+      ...toRefs(state),
+      minDate,
+      maxDate
+    };
   }
 };
 </script>
