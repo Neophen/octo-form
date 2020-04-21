@@ -10,7 +10,7 @@
     :number="fieldNumber"
     :hasValue="!!initial || imageData.length > 0"
   >
-    <div class="octo-form-svg">
+    <div class="octo-form-image-file">
       <input
         type="file"
         :name="key"
@@ -19,7 +19,7 @@
         hidden
         ref="inputRef"
       />
-      <div class="octo-form-svg__image">
+      <div class="octo-form-image-file__image">
         <img v-if="imageData.length > 0" class="preview" :src="imageData" />
         <img v-else-if="initial" class="preview" :src="initial" />
       </div>

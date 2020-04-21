@@ -2,15 +2,34 @@
   position: relative;
 
   .octo-form-svg__image {
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 1500px;
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: var(--octo-radius-default);
     border: 1px dashed var(--octo-muted-500);
     background-color: white;
     .preview {
-      width: 100%;
+      width: auto;
+      height: 100%;
+    }
+  }
+}
+
+
+.octo-form-image-file {
+  position: relative;
+
+  .octo-form-image-file__image {
+    height: 300px;
+    width: 300px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: var(--octo-radius-default);
+    border: 1px dashed var(--octo-muted-500);
+    background-color: white;
+    .preview {
+      width: auto;
       height: 100%;
     }
   }
