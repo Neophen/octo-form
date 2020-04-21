@@ -5,6 +5,7 @@ export { default as Date } from "./Date";
 export { default as DateRange } from "./DateRange";
 export { default as Hidden } from "./Hidden";
 export { default as Image } from "./Image";
+export { default as ImageFile } from "./ImageFile";
 export { default as Images } from "./Images";
 export { default as LabelSelect } from "./LabelSelect";
 export { default as Languages } from "./Languages";
