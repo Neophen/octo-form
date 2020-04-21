@@ -281,6 +281,11 @@ export const inputsFieldset = {
     type: "svg",
     // can_toggle: true,
   },
+  iamge_file: {
+    display: "Image upload",
+    type: "image-file",
+    // can_toggle: true,
+  },
   section_test: {
     display: "Test",
     type: "section",
