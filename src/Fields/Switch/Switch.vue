@@ -14,6 +14,8 @@
       :key="key"
       :name="key"
       :disabled="disabled"
+      :true-value="true"
+      :false-value="false"
       v-model="computedValue"
     />
   </o-field>
