@@ -291,6 +291,16 @@ export const inputsFieldset = {
     type: "section",
     can_toggle: true,
   },
+  text_for_tesst: {
+    display: "Text",
+    icon: "sample-badge",
+    number: 1,
+    tooltip: 'some tooltip',
+    can_toggle: true,
+    type: "text",
+    placeholder: 'Text input...',
+    validate: "max:150",
+  },
   switch: {
     display: "Switch",
     type: "switch",
@@ -298,7 +308,7 @@ export const inputsFieldset = {
     number: 1,
     tooltip: 'some tooltip',
     can_toggle: true,
-    show_when: { section_test: true }
+    show_when: { text_for_tesst: 'any_value' }
   },
   show_if: {
     display: "Show if switch is on",

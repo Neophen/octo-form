@@ -51,7 +51,7 @@ export default {
         const field = props.fields[key];
         if (!field.value) return false;
         if (condition[key] === "any_value") {
-          return field.value;
+          return !!field.value;
         }
         return field.value === condition[key];
       });
