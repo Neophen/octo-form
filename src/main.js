@@ -2,6 +2,7 @@ import * as fields from "./Fields";
 
 import Form from "./Form";
 import Field from "./Field";
+import TipTap from "./tip-tap/TipTap.vue";
 
 import "./styles/app.scss";
 
@@ -36,6 +37,7 @@ const OctoForm = {
       })
     );
     Vue.component(Form.name, Form);
+    Vue.component(TipTap.name, TipTap);
   }
 };
 
