@@ -24,3 +24,4 @@ export { default as Text } from "./Text";
 export { default as Textarea } from "./Textarea";
 export { default as Year } from "./Year";
 export { default as Svg } from "./Svg";
+export { default as File } from "./File";
