@@ -45,15 +45,14 @@ export default {
     const shouldShow = computed(() => {
       if (!props.field.show_when) return true;
 
-      const conditions = [props.field.show_when];
-      const conditionsMetMap = conditions.map(condition => {
-        const key = Object.keys(condition)[0];
+      const conditions = props.field.show_when;
+      const conditionsMetMap = Object.keys(conditions).map(key => {
         const field = props.fields[key];
         if (!field.value) return false;
-        if (condition[key] === "any_value") {
+        if (conditions[key] === "any_value") {
           return !!field.value;
         }
-        return field.value === condition[key];
+        return field.value === conditions[key];
       });
 
       return conditionsMetMap.every(met => met === true);
