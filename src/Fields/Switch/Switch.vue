@@ -10,14 +10,8 @@
     :number="fieldNumber"
     :hasValue="!!computedValue"
   >
-    <o-switch
-      :key="key"
-      :name="key"
-      :disabled="disabled"
-      :true-value="true"
-      :false-value="false"
-      v-model="computedValue"
-    />
+    <input type="text" :value="computedValue" :key="key" :name="key" hidden />
+    <o-switch :disabled="disabled" v-model="computedValue" />
   </o-field>
 </template>
 
