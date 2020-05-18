@@ -20,127 +20,117 @@
     <div v-if="linkType === 'link'">
       <o-input
         class="w-full"
-        v-model="url"
-        @blur="updateUrl"
-        @keydown.native.enter.prevent="updateUrl"
-        @keydown.native.tab="updateUrl"
+        v-model="link"
+        @blur="setLinkCommand"
+        @keydown.native.enter.prevent="setLinkCommand"
+        @keydown.native.tab="setLinkCommand"
         placeholder="Paste URL..."
       />
     </div>
     <div v-if="linkType === 'file'">
-      <input type="file" hidden ref="fileInput" @change="handleInputChange" />
-      <div v-if="hasFile" class="__file-link">
-        <o-text>{{ fileName(url) }}</o-text>
+      <input
+        type="file"
+        hidden
+        ref="fileInputRef"
+        @change="handleInputChange"
+      />
+      <div v-if="file" class="__file-link">
+        <o-text>{{ shortUrl }}</o-text>
       </div>
       <o-button @click="chooseFile" class="w-full" :loading="isLoading">
-        {{ hasFile ? "Change file" : "Select file" }}
+        {{ file ? "Change file" : "Select file" }}
       </o-button>
     </div>
   </div>
 </template>
 
 <script>
-import { reactive, toRefs, watch, ref } from "@vue/composition-api";
+import { reactive, toRefs, watch, ref, computed } from "@vue/composition-api";
+import { useFileManager } from "../utils/useFileManager";
 
 export default {
   name: "LinkMenu",
   props: {
     linkCommand: null,
-    linkAttributes: null,
-    field: null
+    linkAttributes: null
   },
   setup(props) {
-    const fileInput = ref(null);
+    const fileInputRef = ref(null);
+    const { fileManager } = useFileManager();
 
     const state = reactive({
       linkType: props.linkAttributes["data-link-type"] || "link",
-      url: props.linkAttributes.href,
-      hasFile: props.linkAttributes["data-has-file"] || false,
+      file: props.linkAttributes["data-file"] || "",
+      link: props.linkAttributes["data-link"] || "",
       isLoading: false
     });
 
     watch(
       () => props.linkAttributes,
       linkAttributes => {
-        state.url = linkAttributes.href;
-        state.hasFile = linkAttributes["data-has-file"] || state.hasFile;
         state.linkType = linkAttributes["data-link-type"] || state.linkType;
+        state.file = linkAttributes["data-file"] || state.file;
+        state.link = linkAttributes["data-link"] || state.link;
       }
     );
+
+    const linkCommand = options => {
+      const base = {
+        href: state.linkType === "link" ? state.link : state.file,
+        "data-link-type": state.linkType,
+        "data-file": state.file,
+        "data-link": state.link
+      };
+      props.linkCommand({ ...base, ...options });
+    };
 
     watch(
       () => state.linkType,
       linkType => {
-        props.linkCommand({
-          href: state.url,
+        linkCommand({
+          href: linkType === "link" ? state.link : state.file,
           "data-link-type": linkType
         });
       },
       { lazy: true }
     );
 
-    const updateUrl = () => {
-      if (state.url === "") {
-        props.linkCommand({ href: null });
+    watch(
+      () => state.file,
+      file => {
+        linkCommand({
+          href: file,
+          "data-link-type": "file"
+        });
+      },
+      { lazy: true }
+    );
+
+    const setLinkCommand = () => {
+      if (state.link === "") {
+        linkCommand({ href: null });
         return;
       }
-      props.linkCommand({
-        href: state.url,
-        "data-link-type": state.linkType,
-        "data-has-file": false
-      });
+      linkCommand({ href: state.link });
     };
 
-    const fileName = url => {
-      const all = url.split("/");
-      return all[all.length - 1];
-    };
+    const shortUrl = computed(() => /[^/]*$/.exec(state.file)[0]);
 
     const chooseFile = () => {
-      fileInput.value.click();
+      fileInputRef.value.click();
     };
 
     const handleInputChange = async () => {
-      let input = fileInput.value;
-      if (!input.files.length) return;
-
-      let file = input.files[0];
-
-      const formData = new FormData();
-      formData.append("rich_text_file", file);
-      formData.append("type", "file");
-      formData.append("container", props.field.container);
-      formData.append("folder", props.field.folder);
-
+      if (!fileInputRef.value.files.length) return;
       state.isLoading = true;
 
-      if (state.hasFile) {
-        try {
-          window.axios.post(props.field.delete_url, {
-            _method: "delete",
-            url: state.url
-          });
-        } catch (error) {
-          //! we don't care if this erros out
-          //! as we just send this as indication that you could do something about it.
-        }
-      }
-
       try {
-        const { data } = await window.axios.post(
-          props.field.upload_url,
-          formData,
-          {
-            headers: {
-              "content-type": "multipart/form-data"
-            }
-          }
-        );
-        props.linkCommand({
-          href: data,
-          "data-has-file": true,
-          "data-link-type": "file"
-        });
+        const oldFile = state.file;
+        state.file = await fileManager.uploadFile(fileInputRef.value.files[0]);
+
+        if (oldFile) {
+          fileManager.deleteFile(oldFile);
+        }
       } catch (error) {
         console.error(error);
       } finally {
@@ -150,9 +140,9 @@ export default {
 
     return {
       ...toRefs(state),
-      fileName,
-      updateUrl,
-      fileInput,
+      shortUrl,
+      setLinkCommand,
+      fileInputRef,
       chooseFile,
       handleInputChange
     };

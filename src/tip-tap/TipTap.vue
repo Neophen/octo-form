@@ -8,7 +8,7 @@
     />
     <div class="octo-control" ref="editorRef" @click="focusEditor">
       <editor-content
-        class="editor__content textarea"
+        class="editor__content textarea opb-theme-text-content"
         :class="{ 'is-primary': editor.focused }"
         :editor="editor"
       />
