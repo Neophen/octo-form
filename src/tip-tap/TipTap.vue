@@ -2,9 +2,8 @@
   <div class="octo-form-editor">
     <menu-bubble
       :editor="editor"
-      :field="field"
       :editorRef="$refs.editorRef"
-      :field-key="$vnode.key"
+      :file-manager="fileManager"
     />
     <div class="octo-control" ref="editorRef" @click="focusEditor">
       <editor-content
@@ -31,7 +30,10 @@ export default {
       type: String,
       default: "<p></p>"
     },
-    field: null
+    fileManager: {
+      type: Object,
+      required: true
+    }
   },
   components: {
     EditorContent,

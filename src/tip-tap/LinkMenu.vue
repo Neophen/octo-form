@@ -46,18 +46,19 @@
 
 <script>
 import { reactive, toRefs, watch, ref, computed } from "@vue/composition-api";
-import { useFileManager } from "../utils/useFileManager";
 
 export default {
   name: "LinkMenu",
   props: {
     linkCommand: null,
-    linkAttributes: null
+    linkAttributes: null,
+    fileManager: {
+      type: Object,
+      required: true
+    }
   },
   setup(props) {
     const fileInputRef = ref(null);
-    const { fileManager } = useFileManager();
-
     const state = reactive({
       linkType: props.linkAttributes["data-link-type"] || "link",
       file: props.linkAttributes["data-file"] || "",
@@ -126,10 +127,12 @@ export default {
 
       try {
         const oldFile = state.file;
-        state.file = await fileManager.uploadFile(fileInputRef.value.files[0]);
+        state.file = await props.fileManager.uploadFile(
+          fileInputRef.value.files[0]
+        );
 
         if (oldFile) {
-          fileManager.deleteFile(oldFile);
+          props.fileManager.deleteFile(oldFile);
         }
       } catch (error) {
         console.error(error);

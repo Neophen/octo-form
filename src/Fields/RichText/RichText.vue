@@ -11,7 +11,7 @@
     :hasValue="!!computedValue"
   >
     <textarea :name="key" :value="computedValue" hidden />
-    <tip-tap v-model="computedValue" :field="field" :key="key" />
+    <tip-tap v-model="computedValue" :file-manager="fileManager" />
   </o-field>
 </template>
 
@@ -19,11 +19,19 @@
 import { fieldMixin } from "../../utils/fieldMixin.js";
 import { vModelMixin } from "../../utils/vModelMixin.js";
 import TipTap from "../../tip-tap/TipTap.vue";
+import { useFileManager } from "../../utils/useFileManager";
 export default {
   name: "OctoFormRichText",
   mixins: [vModelMixin, fieldMixin],
   components: {
     TipTap
+  },
+  setup() {
+    const { fileManager } = useFileManager();
+
+    return {
+      fileManager
+    };
   }
 };
 </script>

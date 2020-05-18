@@ -1,7 +1,6 @@
 <template>
   <portal to="octo-popups-multiple">
     <editor-menu-bubble
-      :key="fieldKey"
       :editor="editor"
       :keep-in-bounds="false"
       @hide="hideMenuBubble"
@@ -81,7 +80,7 @@
           :link-command="commands.link"
           :link-attributes="getMarkAttrs('link')"
           @close="hideLinkMenu"
-          :field="field"
+          :file-manager="fileManager"
         />
       </div>
     </editor-menu-bubble>
@@ -101,10 +100,12 @@ export default {
     EditorMenuBubble
   },
   props: {
+    fileManager: {
+      type: Object,
+      required: true
+    },
     editor: null,
-    field: null,
-    editorRef: null,
-    fieldKey: String
+    editorRef: null
   },
   setup(props) {
     const state = reactive({
@@ -131,10 +132,8 @@ export default {
       state.linkAttributes = attrs;
     };
 
-    // // Popper
     const hideMenuBubble = () => {
       hideLinkMenu();
-      // destroyPopper();
     };
 
     const showMenuBubble = () => {
