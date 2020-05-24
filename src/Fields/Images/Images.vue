@@ -236,18 +236,26 @@ export default {
       }
 
       const config = [];
-      const imgsData = [];
+      const formDataFields = [];
 
       state.images.forEach(image => {
-        const imgKey = `${key}_${image.id}`;
+        const imgKey = image.id.startsWith(key)
+          ? image.id
+          : `${key}_${image.id}`;
+
         const file = image.file || image.src;
         const isFile = typeof file !== "string";
-        config.push({ id: imgKey, is_image: isFile });
-        imgsData.push({
+
+        const fileField = {
           key: imgKey,
           value: image.file || image.src
-        });
-        imgsData.push({ key: `${imgKey}_focus`, value: image.focus });
+        };
+
+        const fileFocus = { key: `${imgKey}_focus`, value: image.focus };
+
+        config.push({ id: imgKey, is_image: isFile });
+        formDataFields.push(fileField);
+        formDataFields.push(fileFocus);
       });
 
       return [
@@ -255,7 +263,7 @@ export default {
           key: key,
           value: JSON.stringify(config)
         },
-        ...imgsData
+        ...formDataFields
       ];
     };
 
