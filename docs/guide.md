@@ -18,12 +18,6 @@ export const inputsFieldset = {
     validate: "max:1000",
     localizable: true
   },
-  rich_text: {
-    display: "Rich text input",
-    type: "textarea",
-    placeholder: 'Rich text input...',
-    localizable: true
-  },
   radio_group: {
     display: "Radio group",
     type: "radio-group",

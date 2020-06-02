@@ -4,27 +4,21 @@
 export const inputsFieldset = {
   section_input: {
     display: "Inputs",
-    type: "section"
+    type: "section",
   },
   text: {
     display: "Text",
     type: "text",
-    placeholder: 'Text input...',
+    placeholder: "Text input...",
     validate: "max:150",
-    localizable: true
+    localizable: true,
   },
   textarea: {
     display: "Textarea",
     type: "textarea",
-    placeholder: 'Textarea input...',
+    placeholder: "Textarea input...",
     validate: "max:1000",
-    localizable: true
-  },
-  rich_text: {
-    display: "Rich text input",
-    type: "textarea",
-    placeholder: 'Rich text input...',
-    localizable: true
+    localizable: true,
   },
   radio_group: {
     display: "Radio group",
@@ -32,12 +26,12 @@ export const inputsFieldset = {
     default: "default",
     options: {
       default: "Default",
-      other: "Other"
-    }
+      other: "Other",
+    },
   },
   number: {
     display: "Number",
-    placeholder: 'Number input...',
+    placeholder: "Number input...",
     type: "number",
     min: 0,
   },
@@ -50,7 +44,7 @@ export const inputsFieldset = {
   },
   section_tags: {
     display: "Tags",
-    type: "section"
+    type: "section",
   },
   tag: {
     display: "Tag",
@@ -64,28 +58,28 @@ export const inputsFieldset = {
     },
     options: [
       {
-        label: 'Tag 1',
-        value: 'tag-1'
+        label: "Tag 1",
+        value: "tag-1",
       },
       {
-        label: 'Tag 2',
-        value: 'tag-2'
+        label: "Tag 2",
+        value: "tag-2",
       },
       {
-        label: 'Tag 3',
-        value: 'tag-3'
+        label: "Tag 3",
+        value: "tag-3",
       },
       {
-        label: 'Tag 4',
-        value: 'tag-4'
+        label: "Tag 4",
+        value: "tag-4",
       },
       {
-        label: 'Tag 5',
-        value: 'tag-5'
+        label: "Tag 5",
+        value: "tag-5",
       },
       {
-        label: 'Tag 6',
-        value: 'tag-6'
+        label: "Tag 6",
+        value: "tag-6",
       },
     ],
   },
@@ -102,36 +96,36 @@ export const inputsFieldset = {
     },
     options: [
       {
-        label: 'Tag 1',
-        value: 'tag-1'
+        label: "Tag 1",
+        value: "tag-1",
       },
       {
-        label: 'Tag 2',
-        value: 'tag-2'
+        label: "Tag 2",
+        value: "tag-2",
       },
       {
-        label: 'Tag 3',
-        value: 'tag-3'
+        label: "Tag 3",
+        value: "tag-3",
       },
       {
-        label: 'Tag 4',
-        value: 'tag-4'
+        label: "Tag 4",
+        value: "tag-4",
       },
       {
-        label: 'Tag 5',
-        value: 'tag-5'
+        label: "Tag 5",
+        value: "tag-5",
       },
       {
-        label: 'Tag 6',
-        value: 'tag-6'
+        label: "Tag 6",
+        value: "tag-6",
       },
     ],
   },
   list: {
     display: "List",
     type: "list",
-    placeholder: 'List input...',
-    localizable: true
+    placeholder: "List input...",
+    localizable: true,
   },
   countries: {
     display: "Countries",
@@ -145,7 +139,7 @@ export const inputsFieldset = {
   },
   section_Images: {
     display: "Images",
-    type: "section"
+    type: "section",
   },
   avatar: {
     display: "Avatar",
@@ -159,7 +153,7 @@ export const inputsFieldset = {
     type: "image",
     value: "/DianaAndMe.jpg",
     width: 1920,
-    height: 1080
+    height: 1080,
   },
   // film_still_imgs: {
   //   display: "Film stills",

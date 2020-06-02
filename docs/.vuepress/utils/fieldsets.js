@@ -1,36 +1,10 @@
 export const filmFieldset = {
-  // cover_img: {
-  //   display: "Cover image",
-  //   type: "image",
-  //   validate: "required",
-  //   container: "img_film",
-  //   folder: "film_covers",
-  //   quality: 2,
-  //   width: 960,
-  //   height: 300
-  // },
-  // film_still_imgs: {
-  //   display: "Film stills",
-  //   type: "images",
-  //   max_files: 3,
-  //   container: "img_film",
-  //   folder: "film_stills",
-  //   quality: 3,
-  //   width: 640,
-  //   height: 360
-  // },
   title: {
     display: "Film title",
     type: "text",
     validate: "required|max:150",
     localizable: true
   },
-  // film_tagline_synopsis: {
-  //   display: "Tagline & synopsis",
-  //   type: "rich-text",
-  //   validate: "required|max:150",
-  //   localizable: true
-  // },
   section_title_director: {
     display: "Director",
     type: "section"
@@ -39,16 +13,6 @@ export const filmFieldset = {
     display: "Director(s) full name",
     type: "list"
   },
-  // film_director_img: {
-  //   display: "Director's photo",
-  //   type: "avatar",
-  //   validate: "required",
-  //   quality: 2,
-  //   width: 300,
-  //   height: 300,
-  //   folder: "film_directors",
-  //   container: "img_film",
-  // },
   film_directors_bio: {
     display: "Director's bio",
     type: "textarea",
@@ -246,35 +210,6 @@ export const filmFieldset = {
   }
 };
 
-// export const inputsFieldset = {
-//   rich_text: {
-//     display: "Test",
-//     type: "rich-text",
-//   },
-//   rich_text_2: {
-//     display: "Test 2",
-//     type: "rich-text",
-//   },
-//     images: {
-//     display: "Images",
-//     type: "images",
-//     validate: "required",
-//     icon: "sample-badge",
-//     number: 1,
-//     tooltip: 'some tooltip',
-//     can_toggle: true,
-//     max_files: 3,
-//     value: [
-//       {
-//         id: "some-id",
-//         src: "/DianaAndMe.jpg",
-//       }
-//     ],
-//     width: 1920,
-//     height: 1080
-//   },
-// };
-
 export const inputsFieldset = {
   switch_test: {
     display: "Switch",
@@ -408,17 +343,6 @@ export const inputsFieldset = {
     type: "textarea",
     placeholder: 'Textarea input...',
     validate: "max:1000",
-    localizable: true
-  },
-  rich_text: {
-    show_when: { section_input: true },
-    display: "Rich text input",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    type: "textarea",
-    placeholder: 'Rich text input...',
     localizable: true
   },
   radio_group: {
@@ -665,7 +589,6 @@ export const inputsFieldset = {
 export const inputsFieldsetErrors = {
   text: ['text input is required'],
   textarea: ['textarea input is required'],
-  rich_text: ['rich text input is required'],
   radio_group: ['radio group input is required'],
   number: ['number input is required'],
   year: ['year input is required'],
