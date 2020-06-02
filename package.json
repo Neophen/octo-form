@@ -53,8 +53,6 @@
     "portal-vue": "^2.1.7",
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
-    "tiptap": "^1.27.1",
-    "tiptap-extensions": "^1.29.1",
     "vee-validate": "^3.3.0",
     "vue-template-compiler": "^2.6.11",
     "vuepress": "^1.5.0"
