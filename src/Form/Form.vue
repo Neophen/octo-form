@@ -46,8 +46,6 @@
 
 <script>
 import { reactive, toRefs, ref, computed, watch } from "@vue/composition-api";
-import { provideFileManager } from "../utils/useFileManager.js";
-
 export default {
   name: "OctoForm",
   props: {
@@ -60,16 +58,9 @@ export default {
       default: () => ({})
     },
     errors: [Array, Object],
-    loading: Boolean,
-    fileManager: {
-      type: Object,
-      required: false
-    }
+    loading: Boolean
   },
   setup(props, { emit, root }) {
-    if (props.fileManager) {
-      provideFileManager(props.fileManager);
-    }
     const refForm = ref(null);
     const refValidation = ref(null);
 
