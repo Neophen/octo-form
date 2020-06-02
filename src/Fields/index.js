@@ -14,7 +14,6 @@ export { default as ONumber } from "./Number";
 export { default as Partition } from "./Partition";
 export { default as Password } from "./Password";
 export { default as RadioGroup } from "./RadioGroup";
-export { default as RichText } from "./RichText";
 export { default as Section } from "./Section";
 export { default as SelectItems } from "./SelectItems";
 export { default as SingleTag } from "./SingleTag";
