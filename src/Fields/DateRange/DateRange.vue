@@ -75,7 +75,8 @@ export default {
           start: startDate,
           end: state.endDate
         });
-      }
+      },
+      { immediate: true }
     );
 
     watch(
@@ -86,7 +87,8 @@ export default {
           start: state.startDate,
           end: endDate
         });
-      }
+      },
+      { immediate: true }
     );
 
     const minDateStart = computed(() => {

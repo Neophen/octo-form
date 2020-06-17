@@ -100,7 +100,8 @@ export default {
         root.$nextTick(() => {
           refValidation.value.setErrors(errors);
         });
-      }
+      },
+      { immediate: true }
     );
 
     const onSubmit = async () => {

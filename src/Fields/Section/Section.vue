@@ -24,7 +24,8 @@ export default {
       () => state.isOpen,
       open => {
         emit("input", open);
-      }
+      },
+      { immediate: true }
     );
 
     return { ...toRefs(state) };

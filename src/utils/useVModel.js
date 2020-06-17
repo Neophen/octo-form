@@ -9,16 +9,14 @@ export const useVModel = (props, emit) => {
     () => state.modelValue,
     value => {
       emit("input", value);
-    },
-    { lazy: true }
+    }
   );
 
   watch(
     () => props.value,
     value => {
       state.modelValue = value;
-    },
-    { lazy: true }
+    }
   );
 
   return { ...toRefs(state) };
