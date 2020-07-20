@@ -31,7 +31,7 @@
     "canvas-exif-orientation": "^0.4.0"
   },
   "devDependencies": {
-    "@mykolasm/octo-ui": "^0.1.115",
+    "@mykolasm/octo-ui": "^1.0.2",
     "@popperjs/core": "^2.4.2",
     "@vue/cli-plugin-babel": "~4.2.0",
     "@vue/cli-plugin-eslint": "~4.2.0",
@@ -62,7 +62,7 @@
     "@vue/composition-api": "^0.6.4",
     "@popperjs/core": "^2.0.6",
     "portal-vue": "^2.1.7",
-    "@mykolasm/octo-ui": "^0.1.*",
+    "@mykolasm/octo-ui": "^1.*",
     "vee-validate": "^3.2.5"
   },
   "keywords": [
