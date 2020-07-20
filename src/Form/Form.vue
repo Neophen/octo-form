@@ -108,8 +108,8 @@ export default {
       emit("submit-state", "start");
 
       const prepareFields = Object.values(refValidation.value.refs)
-        .filter(field => field.$children[0].prepare)
-        .map(field => field.$children[0].prepare());
+        .filter(field => field.$children[0] && field.$children[0].prepare)
+        .map(field => field.$children[0]?.prepare());
 
       emit("submit-state", "progress-25");
       const blobs = await Promise.all(prepareFields);
