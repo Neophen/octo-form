@@ -19,9 +19,9 @@
         ref="fileInput"
       />
       <div v-if="fileName" class="overflow-hidded">
-        <o-text class="max-w-full mb-2 truncate" :title="fileName">
-          {{ fileName }}
-        </o-text>
+        <o-text class="max-w-full mb-2 truncate" :title="fileName">{{
+          fileName
+        }}</o-text>
         <div class="flex space-x-2">
           <button
             @click="deleteFile"
@@ -39,9 +39,7 @@
           </button>
         </div>
       </div>
-      <o-button v-else @click="chooseFile">
-        Select file
-      </o-button>
+      <o-button v-else @click="chooseFile">Select file</o-button>
     </div>
   </o-field>
 </template>
@@ -70,7 +68,7 @@ export default {
 
     const handleInputChange = async () => {
       if (!state.fileInput.files.length) return;
-      state.filename = state.fileInput.files[0].name;
+      state.fileName = state.fileInput.files[0].name;
       state.hasFile = true;
     };
 
