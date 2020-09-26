@@ -26,7 +26,7 @@
           :disabled="loading"
           @click="cancelAction"
         >
-          {{ form.secondary }}
+          {{ form.cancel }}
         </OButton>
         <OButton
           native-type="submit"
