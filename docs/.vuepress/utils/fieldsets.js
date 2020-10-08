@@ -86,12 +86,6 @@ export const filmFieldset = {
       },
     ],
   },
-  film_countries: {
-    display: "Countries",
-    type: "countries",
-    validate: "required",
-    placeholder: "Select countries...",
-  },
   film_release_year: {
     display: "Year of the release",
     type: "year",
@@ -141,16 +135,6 @@ export const filmFieldset = {
         value: 'musical'
       },
     ],
-  },
-  film_languages: {
-    display: "Film language",
-    type: "languages",
-    validate: "required"
-  },
-  film_subtitles_language: {
-    display: "Subtitle language",
-    type: "languages",
-    validate: "required"
   },
   section_title_crew: {
     display: "Crew",
@@ -515,24 +499,6 @@ export const inputsFieldset = {
     type: "list",
     placeholder: 'List input...',
     localizable: true
-  },
-  countries: {
-    display: "Countries",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    type: "countries",
-    placeholder: "Select countries...",
-  },
-  languages: {
-    display: "Languages",
-    icon: "sample-badge",
-    number: 1,
-    tooltip: 'some tooltip',
-    can_toggle: true,
-    type: "languages",
-    placeholder: "Select languages..",
   },
   partition_images: {
     type: 'partition',

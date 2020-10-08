@@ -1,8 +1,8 @@
 import {
+  computed,
+  getCurrentInstance,
   reactive,
   toRefs,
-  computed,
-  getCurrentInstance
 } from "@vue/composition-api";
 
 export const useOptions = (props, options = null) => {
@@ -20,28 +20,28 @@ export const useOptions = (props, options = null) => {
               ? false
               : !selectedOptionValues.includes(option.label.toLowerCase());
           })
-        : state._options
+        : state._options,
     ),
     selectedOptions: computed({
       get: () =>
         props.value
           ? props.value.map(
-              optionVal => findOptionByValue(optionVal) || optionVal
+              optionVal => findOptionByValue(optionVal) || optionVal,
             )
           : [],
       set(options) {
         const emitted = options.map(tag =>
-          typeof tag === "string" ? tag : tag.value
+          typeof tag === "string" ? tag : tag.value,
         );
         instance.$emit("input", emitted);
-      }
-    })
+      },
+    }),
   });
 
   const findOptionByValue = value =>
     state._options.find(option => option.value === value);
 
   return {
-    ...toRefs(state)
+    ...toRefs(state),
   };
 };

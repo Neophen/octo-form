@@ -127,16 +127,6 @@ export const inputsFieldset = {
     placeholder: "List input...",
     localizable: true,
   },
-  countries: {
-    display: "Countries",
-    type: "countries",
-    placeholder: "Select countries...",
-  },
-  languages: {
-    display: "Languages",
-    type: "languages",
-    placeholder: "Select languages..",
-  },
   section_Images: {
     display: "Images",
     type: "section",
